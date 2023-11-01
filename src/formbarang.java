@@ -55,7 +55,7 @@ public class formbarang extends javax.swing.JFrame {
         kd_barang.setEnabled(true);
         txtnama.setEnabled(true);
         cmbjenis.setEnabled(true);
-        txtjenis.setEnabled(true);
+        txtjenis.setEnabled(false);
         txtnet.setEnabled(true);
         txtjual.setEnabled(true);
         txtstok.setEnabled(true);
