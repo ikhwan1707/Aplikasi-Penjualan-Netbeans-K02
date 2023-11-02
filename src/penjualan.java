@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
-
 /**
  *
  * @author SMKI Utama8
@@ -33,39 +32,39 @@ public class penjualan extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        txtpetugas = new javax.swing.JTextField();
+        cmbpetugas = new javax.swing.JComboBox<>();
+        txttanggal = new javax.swing.JFormattedTextField();
         jPanel9 = new javax.swing.JPanel();
-        jComboBox8 = new javax.swing.JComboBox<>();
+        cmbkodebarang = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
-        jTextField36 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
+        txtnamabarang = new javax.swing.JTextField();
+        txtsubtotal = new javax.swing.JTextField();
+        txtstok = new javax.swing.JTextField();
+        btnadditem = new javax.swing.JButton();
         jLabel47 = new javax.swing.JLabel();
-        jTextField37 = new javax.swing.JTextField();
-        jButton6 = new javax.swing.JButton();
+        txthargajual = new javax.swing.JTextField();
+        btnhitung = new javax.swing.JButton();
         jLabel48 = new javax.swing.JLabel();
-        jTextField38 = new javax.swing.JTextField();
+        txtjumlah = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        txtnofaktur = new javax.swing.JTextField();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jButton5 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton17 = new javax.swing.JButton();
-        jButton18 = new javax.swing.JButton();
+        tbhasil = new javax.swing.JTable();
+        btnclose = new javax.swing.JButton();
+        btnaddnew = new javax.swing.JButton();
+        btnsave = new javax.swing.JButton();
+        btncancel = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel49 = new javax.swing.JLabel();
         jLabel50 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField39 = new javax.swing.JTextField();
-        jTextField40 = new javax.swing.JTextField();
+        txttotal = new javax.swing.JTextField();
+        txtbayar = new javax.swing.JTextField();
+        txtsisa = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -85,18 +84,18 @@ public class penjualan extends javax.swing.JFrame {
         jLabel5.setText("Nama Petugas");
         jPanel8.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, -1, -1));
 
-        jTextField1.setEnabled(false);
-        jPanel8.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, 310, -1));
+        txtpetugas.setEnabled(false);
+        jPanel8.add(txtpetugas, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, 310, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Data Petugas" }));
-        jPanel8.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 200, -1));
-        jPanel8.add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, 200, -1));
+        cmbpetugas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Data Petugas" }));
+        jPanel8.add(cmbpetugas, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 200, -1));
+        jPanel8.add(txttanggal, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, 200, -1));
 
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Data Barang"));
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Data Barang" }));
-        jPanel9.add(jComboBox8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 140, -1));
+        cmbkodebarang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Data Barang" }));
+        jPanel9.add(cmbkodebarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 140, -1));
 
         jLabel12.setText("Kode Barang");
         jPanel9.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
@@ -110,40 +109,40 @@ public class penjualan extends javax.swing.JFrame {
         jLabel46.setText("Stok");
         jPanel9.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, -1, -1));
 
-        jTextField9.setEnabled(false);
-        jPanel9.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, 330, -1));
+        txtnamabarang.setEnabled(false);
+        jPanel9.add(txtnamabarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, 330, -1));
 
-        jTextField10.setEnabled(false);
-        jPanel9.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 130, 130, -1));
+        txtsubtotal.setEnabled(false);
+        jPanel9.add(txtsubtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 130, 130, -1));
 
-        jTextField36.setEnabled(false);
-        jPanel9.add(jTextField36, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 120, -1));
+        txtstok.setEnabled(false);
+        jPanel9.add(txtstok, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 120, -1));
 
-        jButton4.setText("Add Item");
-        jPanel9.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 170, 170, -1));
+        btnadditem.setText("Add Item");
+        jPanel9.add(btnadditem, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 170, 170, -1));
 
         jLabel47.setText("Jumlah");
         jPanel9.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, -1, -1));
 
-        jTextField37.setEnabled(false);
-        jPanel9.add(jTextField37, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 200, -1));
+        txthargajual.setEnabled(false);
+        jPanel9.add(txthargajual, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 200, -1));
 
-        jButton6.setText("Hitung");
-        jPanel9.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, -1, -1));
+        btnhitung.setText("Hitung");
+        jPanel9.add(btnhitung, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, -1, -1));
 
         jLabel48.setText("Sub Total Rp");
         jPanel9.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 130, -1, -1));
-        jPanel9.add(jTextField38, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 70, -1));
+        jPanel9.add(txtjumlah, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 70, -1));
 
         jPanel8.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 740, 240));
 
         jLabel6.setText("Tanggal Penjualan");
         jPanel8.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, -1, -1));
-        jPanel8.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 140, -1));
+        jPanel8.add(txtnofaktur, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 140, -1));
 
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder("Grid Data Barang"));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tbhasil.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -154,7 +153,7 @@ public class penjualan extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tbhasil);
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -175,22 +174,22 @@ public class penjualan extends javax.swing.JFrame {
 
         jPanel8.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 740, 180));
 
-        jButton5.setText("Close");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnclose.setText("Close");
+        btnclose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btncloseActionPerformed(evt);
             }
         });
-        jPanel8.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 620, -1, -1));
+        jPanel8.add(btnclose, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 620, -1, -1));
 
-        jButton7.setText("Add New");
-        jPanel8.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 620, -1, -1));
+        btnaddnew.setText("Add New");
+        jPanel8.add(btnaddnew, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 620, -1, -1));
 
-        jButton17.setText("Save Transaction");
-        jPanel8.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 620, 130, -1));
+        btnsave.setText("Save Transaction");
+        jPanel8.add(btnsave, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 620, 130, -1));
 
-        jButton18.setText("Cancel");
-        jPanel8.add(jButton18, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 620, -1, -1));
+        btncancel.setText("Cancel");
+        jPanel8.add(btncancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 620, -1, -1));
 
         jLabel1.setText("Total Rp");
         jPanel8.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 690, -1, -1));
@@ -201,41 +200,41 @@ public class penjualan extends javax.swing.JFrame {
         jLabel50.setText("Sisa Rp");
         jPanel8.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 660, -1, -1));
 
-        jTextField3.setEnabled(false);
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        txttotal.setEnabled(false);
+        txttotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                txttotalActionPerformed(evt);
             }
         });
-        jPanel8.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 690, 220, -1));
-        jPanel8.add(jTextField39, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 630, 220, -1));
+        jPanel8.add(txttotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 690, 220, -1));
+        jPanel8.add(txtbayar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 630, 220, -1));
 
-        jTextField40.setEnabled(false);
-        jTextField40.addActionListener(new java.awt.event.ActionListener() {
+        txtsisa.setEnabled(false);
+        txtsisa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField40ActionPerformed(evt);
+                txtsisaActionPerformed(evt);
             }
         });
-        jPanel8.add(jTextField40, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 660, 220, -1));
+        jPanel8.add(txtsisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 660, 220, -1));
 
         jScrollPane3.setViewportView(jPanel8);
 
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 790, 370));
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 790, 430));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField40ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField40ActionPerformed
+    private void txtsisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsisaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField40ActionPerformed
+    }//GEN-LAST:event_txtsisaActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void txttotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttotalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_txttotalActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btncloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncloseActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_btncloseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -273,15 +272,14 @@ public class penjualan extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox8;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JButton btnadditem;
+    private javax.swing.JButton btnaddnew;
+    private javax.swing.JButton btncancel;
+    private javax.swing.JButton btnclose;
+    private javax.swing.JButton btnhitung;
+    private javax.swing.JButton btnsave;
+    private javax.swing.JComboBox<String> cmbkodebarang;
+    private javax.swing.JComboBox<String> cmbpetugas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -301,16 +299,17 @@ public class penjualan extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField36;
-    private javax.swing.JTextField jTextField37;
-    private javax.swing.JTextField jTextField38;
-    private javax.swing.JTextField jTextField39;
-    private javax.swing.JTextField jTextField40;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTable tbhasil;
+    private javax.swing.JTextField txtbayar;
+    private javax.swing.JTextField txthargajual;
+    private javax.swing.JTextField txtjumlah;
+    private javax.swing.JTextField txtnamabarang;
+    private javax.swing.JTextField txtnofaktur;
+    private javax.swing.JTextField txtpetugas;
+    private javax.swing.JTextField txtsisa;
+    private javax.swing.JTextField txtstok;
+    private javax.swing.JTextField txtsubtotal;
+    private javax.swing.JFormattedTextField txttanggal;
+    private javax.swing.JTextField txttotal;
     // End of variables declaration//GEN-END:variables
 }
