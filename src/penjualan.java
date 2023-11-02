@@ -220,7 +220,7 @@ public class penjualan extends javax.swing.JFrame {
 
         jScrollPane3.setViewportView(jPanel8);
 
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 790, 430));
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 790, 370));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
