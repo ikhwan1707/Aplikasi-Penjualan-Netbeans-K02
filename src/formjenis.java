@@ -334,7 +334,7 @@ public class formjenis extends javax.swing.JFrame {
             
             Connection c = koneksi.getKoneksi();
             
-            String sql = "UPDATE tbljenis SET  jenis = ? WHERE kode_jenis = ?";
+            String sql = "UPDATE tbljenis SET  Jenis = ? WHERE KodeJenis = ?";
             
             PreparedStatement p = c.prepareStatement(sql);
             
@@ -373,7 +373,7 @@ public class formjenis extends javax.swing.JFrame {
         try{
             Connection c = koneksi.getKoneksi();
             
-            String sql = "DELETE FROM tbljenis WHERE kode_jenis = ?";
+            String sql = "DELETE FROM tbljenis WHERE KodeJenis = ?";
             
             PreparedStatement p = c.prepareStatement(sql);
             p.setString(1, kode_jenis);

@@ -382,7 +382,7 @@ public class formbarang extends javax.swing.JFrame {
             ResultSet r = s.executeQuery(sql);
             
             while(r.next()){
-                cmbjenis.addItem(r.getString("kode_jenis"));
+                cmbjenis.addItem(r.getString("KodeJenis"));
             }
         } catch (SQLException ex){
             JOptionPane.showMessageDialog(null,ex);
@@ -461,7 +461,7 @@ public class formbarang extends javax.swing.JFrame {
         try{
             Connection c = koneksi.getKoneksi();
             
-            String sql = "DELETE FROM tblbarang WHERE kode_barang = ?";
+            String sql = "DELETE FROM tblbarang WHERE KodeBarang = ?";
             
             PreparedStatement p = c.prepareStatement(sql);
             p.setString(1, kode_barang);
@@ -570,7 +570,7 @@ public class formbarang extends javax.swing.JFrame {
             
             Connection c = koneksi.getKoneksi();
             
-            String sql = "UPDATE tblbarang SET nama_barang = ?,kode_jenis = ?, harga_net = ?, harga_jual = ? , stok = ? WHERE kode_barang = ?";
+            String sql = "UPDATE tblbarang SET NamaBarang = ?,KodeJenis = ?, HargaNet = ?, HargaJual = ? , Stok = ? WHERE KodeBarang = ?";
             
             PreparedStatement p = c.prepareStatement(sql);
             
@@ -608,14 +608,14 @@ public class formbarang extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
             
-            String sql = "SELECT * FROM tbljenis WHERE kode_jenis='"+cmbjenis.getSelectedItem().toString()+"'";
+            String sql = "SELECT * FROM tbljenis WHERE KodeJenis='"+cmbjenis.getSelectedItem().toString()+"'";
             
             Connection c = koneksi.getKoneksi();
             Statement s = c.createStatement();
             ResultSet r = s.executeQuery(sql);
             
             r.absolute(1);
-            txtjenis.setText(r.getString("jenis"));
+            txtjenis.setText(r.getString("Jenis"));
             
         }catch (SQLException ex) {
             
