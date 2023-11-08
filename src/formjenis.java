@@ -1,5 +1,3 @@
-
-
 import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -460,7 +458,6 @@ public class formjenis extends javax.swing.JFrame {
             loadData();
             kosong();
             SetEditOff();
-
         }
         }
         
