@@ -2,7 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
+import java.text.SimpleDateFormat;
+import java.util.Date;
 /**
  *
  * @author SMKI Utama8
@@ -14,6 +15,16 @@ public class penjualan extends javax.swing.JFrame {
      */
     public penjualan() {
         initComponents();
+    
+        
+        // Mendapatkan tanggal saat ini
+        Date date = new Date();
+        
+        // Format tanggal
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        String tanggal = dateFormat.format(date);
+        // Menetapkan tanggal ke dalam JFormattedTextField
+        txttanggal.setText(tanggal);
         
     }
 
@@ -47,9 +58,9 @@ public class penjualan extends javax.swing.JFrame {
         btnadditem = new javax.swing.JButton();
         jLabel47 = new javax.swing.JLabel();
         txthargajual = new javax.swing.JTextField();
-        btnhitung = new javax.swing.JButton();
         jLabel48 = new javax.swing.JLabel();
         txtjumlah = new javax.swing.JTextField();
+        btnhitung = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         txtnofaktur = new javax.swing.JTextField();
         jPanel10 = new javax.swing.JPanel();
@@ -65,6 +76,7 @@ public class penjualan extends javax.swing.JFrame {
         txttotal = new javax.swing.JTextField();
         txtbayar = new javax.swing.JTextField();
         txtsisa = new javax.swing.JTextField();
+        btncaridata = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -95,6 +107,11 @@ public class penjualan extends javax.swing.JFrame {
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cmbkodebarang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Data Barang" }));
+        cmbkodebarang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbkodebarangActionPerformed(evt);
+            }
+        });
         jPanel9.add(cmbkodebarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 140, -1));
 
         jLabel12.setText("Kode Barang");
@@ -119,6 +136,11 @@ public class penjualan extends javax.swing.JFrame {
         jPanel9.add(txtstok, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 120, -1));
 
         btnadditem.setText("Add Item");
+        btnadditem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnadditemActionPerformed(evt);
+            }
+        });
         jPanel9.add(btnadditem, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 170, 170, -1));
 
         jLabel47.setText("Jumlah");
@@ -127,12 +149,12 @@ public class penjualan extends javax.swing.JFrame {
         txthargajual.setEnabled(false);
         jPanel9.add(txthargajual, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 200, -1));
 
-        btnhitung.setText("Hitung");
-        jPanel9.add(btnhitung, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, -1, -1));
-
         jLabel48.setText("Sub Total Rp");
         jPanel9.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 130, -1, -1));
         jPanel9.add(txtjumlah, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 70, -1));
+
+        btnhitung.setText("Hitung");
+        jPanel9.add(btnhitung, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, -1, -1));
 
         jPanel8.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 740, 240));
 
@@ -217,24 +239,46 @@ public class penjualan extends javax.swing.JFrame {
         });
         jPanel8.add(txtsisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 660, 220, -1));
 
+        btncaridata.setText("Cari");
+        btncaridata.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncaridataActionPerformed(evt);
+            }
+        });
+        jPanel8.add(btncaridata, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, -1, -1));
+
         jScrollPane3.setViewportView(jPanel8);
 
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 790, 430));
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 790, 420));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtsisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsisaActionPerformed
+    private void cmbkodebarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbkodebarangActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtsisaActionPerformed
+
+    }//GEN-LAST:event_cmbkodebarangActionPerformed
+
+    private void btnadditemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnadditemActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_btnadditemActionPerformed
+
+    private void btncloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncloseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btncloseActionPerformed
 
     private void txttotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttotalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txttotalActionPerformed
 
-    private void btncloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncloseActionPerformed
+    private void txtsisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsisaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btncloseActionPerformed
+    }//GEN-LAST:event_txtsisaActionPerformed
+
+    private void btncaridataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncaridataActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btncaridataActionPerformed
 
     /**
      * @param args the command line arguments
@@ -275,6 +319,7 @@ public class penjualan extends javax.swing.JFrame {
     private javax.swing.JButton btnadditem;
     private javax.swing.JButton btnaddnew;
     private javax.swing.JButton btncancel;
+    private javax.swing.JButton btncaridata;
     private javax.swing.JButton btnclose;
     private javax.swing.JButton btnhitung;
     private javax.swing.JButton btnsave;
