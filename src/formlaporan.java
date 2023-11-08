@@ -1,4 +1,4 @@
-
+import java.sql.Connection;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -151,6 +151,10 @@ public class formlaporan extends javax.swing.JFrame {
 
     private void btnbarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbarangActionPerformed
         // TODO add your handling code here:
+        Connection c = koneksi.getKoneksi();
+        
+        
+
     }//GEN-LAST:event_btnbarangActionPerformed
 
     /**
