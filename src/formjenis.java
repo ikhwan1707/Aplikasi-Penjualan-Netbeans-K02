@@ -29,10 +29,6 @@ public class formjenis extends javax.swing.JFrame {
         loadData();
         kosong();
         SetEnabledFalse();
-        btnsave.setEnabled(false);
-        btnupdate.setEnabled(false);
-        btndelete.setEnabled(false);
-        btncancel.setEnabled(false);
 
         
         
@@ -41,12 +37,17 @@ public class formjenis extends javax.swing.JFrame {
     public void SetEnabledFalse(){
         kd_jenis.setEnabled(false);
         txtjenis.setEnabled(false);
-        
+        btnsave.setEnabled(false);
+        btnupdate.setEnabled(false);
+        btndelete.setEnabled(false);
     }
      
     public void SetEnabledTrue(){
         kd_jenis.setEnabled(true);
         txtjenis.setEnabled(true);
+        btnsave.setEnabled(true);
+        btnupdate.setEnabled(true);
+        btndelete.setEnabled(true);
         
     }    
 
@@ -304,16 +305,24 @@ public class formjenis extends javax.swing.JFrame {
         kd_jenis.setText(null);
         txtjenis.setText(null);
     }
+    
+    public void SetEditOff(){
+        kd_jenis.setEnabled(false);
+        txtjenis.setEnabled(false);
+    }
+    public void SetEditOn(){
+        kd_jenis.setEnabled(true);
+        txtjenis.setEnabled(true);
+    }
 
     private void btnaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddActionPerformed
         // TODO add your handling code here:
-
-        SetEnabledTrue();
+        kosong();
+        kd_jenis.requestFocus();
         btnsave.setEnabled(true);
-        btnupdate.setEnabled(true);
-        btndelete.setEnabled(true);
-        btncancel.setEnabled(true);
-        btnadd.setEnabled(false);
+        btnupdate.setEnabled(false);
+        btndelete.setEnabled(false);
+         SetEditOn();
     }//GEN-LAST:event_btnaddActionPerformed
 
     private void btnupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnupdateActionPerformed
@@ -329,20 +338,16 @@ public class formjenis extends javax.swing.JFrame {
         String kode_jenis = (String) model.getValueAt(i, 0);
         String jenis = txtjenis.getText();
         
-        
         try{
-            
             Connection c = koneksi.getKoneksi();
-            
             String sql = "UPDATE tbljenis SET  Jenis = ? WHERE KodeJenis = ?";
-            
             PreparedStatement p = c.prepareStatement(sql);
             
             p.setString(1, jenis);
-                p.setString(2, kode_jenis);
+            p.setString(2, kode_jenis);
                 
             p.executeUpdate();
-                p.close();
+            p.close();
                 
                 JOptionPane.showMessageDialog(null,
                        "Ubah Data Berhasil");
@@ -353,7 +358,9 @@ public class formjenis extends javax.swing.JFrame {
                 
             }finally{
             loadData();
+            btnsave.setEnabled(false);
             kosong();
+            SetEditOff();
         }
       
     }//GEN-LAST:event_btnupdateActionPerformed
@@ -390,7 +397,7 @@ public class formjenis extends javax.swing.JFrame {
             }finally{
             loadData();
             kosong();
-        
+            SetEditOff();
         }
 
 
@@ -399,13 +406,8 @@ public class formjenis extends javax.swing.JFrame {
     private void btncancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelActionPerformed
         // TODO add your handling code here:
         kosong();
-//        autocode();
         SetEnabledFalse();
-        btnadd.setEnabled(true);
-        btnsave.setEnabled(false);
-        btnupdate.setEnabled(false);
-        btndelete.setEnabled(false);
-        btncancel.setEnabled(false);
+        //SetEditOff();
        
     }//GEN-LAST:event_btncancelActionPerformed
 
@@ -423,10 +425,13 @@ public class formjenis extends javax.swing.JFrame {
             return;
         }
         
-        String kode_jenis = tabeljenis.getValueAt(baris, 0).toString();
-        kd_jenis.setText(kode_jenis);
-        String jenis = tabeljenis.getValueAt(baris, 1).toString();
-        txtjenis.setText(jenis);
+        kd_jenis.setText(model.getValueAt(baris, 0).toString());
+        txtjenis.setText(model.getValueAt(baris, 1).toString());
+        btnsave.setEnabled(false);
+        btnupdate.setEnabled(true);
+        btndelete.setEnabled(true);
+        SetEditOn();
+        
         
     }//GEN-LAST:event_tabeljenisMouseClicked
 
@@ -454,7 +459,8 @@ public class formjenis extends javax.swing.JFrame {
             }finally{
             loadData();
             kosong();
-//            autocode();
+            SetEditOff();
+
         }
         }
         
