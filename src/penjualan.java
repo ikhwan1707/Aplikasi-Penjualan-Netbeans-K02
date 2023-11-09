@@ -16,16 +16,33 @@ import javax.swing.JOptionPane;
  * @author SMKI Utama8
  */
 public class penjualan extends javax.swing.JFrame {
-
-    /**
-     * Creates new form penjualan
-     */
+    
+    
     public penjualan() {
         initComponents();
         nofaktur();
         TampilComboPetugas();
         TampilComboBarang();
+        kosong();
+        SetEditOff();
         
+        Dimension screenSize=Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension frameSize=this.getSize();
+        if(frameSize.height > screenSize.height){
+        frameSize.height=screenSize.height;
+        }
+        if(frameSize.width > screenSize.width){
+        frameSize.width=screenSize.width;
+        }
+        
+        this.setLocation((screenSize.width - frameSize.width) / 2,
+        (screenSize.height = screenSize.height) / 10);
+        
+        tbhasil.setModel(tableModel);
+        Tabel(tbhasil, new int[]{90,300,90,60,60,90});
+        
+        
+         setDefaultTable();
         // Mendapatkan tanggal saat ini
         Date date = new Date();
         
@@ -36,7 +53,85 @@ public class penjualan extends javax.swing.JFrame {
         txttanggal.setText(tanggal);
     }
     
+    private javax.swing.table.DefaultTableModel tableModel=getDefaultTabelModel();
     
+    private void Tabel(javax.swing.JTable tb, int lebar[] ) {
+        tb.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        int kolom=tb.getColumnCount();
+        for(int i=0;i < kolom;i++) {
+            javax.swing.table.TableColumn tbc=tb.getColumnModel().getColumn(i);
+            tbc.setPreferredWidth(lebar[i]);
+            tb.setRowHeight(17);
+        }
+    }
+    
+    private javax.swing.table.DefaultTableModel getDefaultTabelModel() {
+        return new javax.swing.table.DefaultTableModel(
+        new Object[][] {},
+        new String [] {"Kode Barang","Nama Barang","Harga Jual","Stok","Jumlah","Sub Total"}
+        ){
+            boolean[] canEdit = new boolean[]{
+                false, false, false, false
+            };
+            
+            public boolean isCellEditable(int rowIndex, int columnIndex){
+                return canEdit[columnIndex];
+            }
+        };
+    }
+    
+    public void totalBiaya(){
+        int jumlahBaris = tbhasil.getRowCount();
+        double totalBiaya = 0;
+        int jumlahBarang;
+        double hargaBarang;
+        for (int i = 0; i < jumlahBaris; i++) {
+            jumlahBarang = Integer.parseInt(tbhasil.getValueAt(i, 4).toString());
+            hargaBarang = Double.parseDouble(tbhasil.getValueAt(i, 2).toString());
+            totalBiaya = totalBiaya + (jumlahBarang * hargaBarang);
+        }
+        txttotal.setText(String.format("%.2f", totalBiaya));
+    }
+    
+    String data[]=new String[6];
+    private void setDefaultTable() {
+        try{
+            
+            String sql = "SELECT tblbarang.KodeBarang,tblbarang.NamaBarang,tblbarang.HargaJual,tblbarang.Stok,tbldetailpenjualan.Jumlah,"
+                    + "tbldetailpenjualan.SubTotal,tblpenjualan.NoFaktur "
+                    + "FROM tblbarang,tbldetailpenjualan,tblpenjualan WHERE tblbarang.KodeBarang=tbldetailpenjualan.KodeBarang "
+                    + "AND tblpenjualan.NoFaktur=tbldetailpenjualan.NoFaktur AND tbldetailpenjualan.NoFaktur='"+txtnofaktur.getText()+"'";
+
+            Connection c = koneksi.getKoneksi(); 
+            Statement s = c.createStatement();       
+            ResultSet res = s.executeQuery(sql);  
+
+            while(res.next()){
+            // lakukan penelusuran baris 
+                data[0] = res.getString(1);
+                data[1] = res.getString(2);
+                data[2] = res.getString(3);
+                data[3] = res.getString(4);
+                data[4] = res.getString(5);
+                data[5] = res.getString(6);
+                tableModel.addRow(data);
+            }
+            
+        }catch(SQLException e){ 
+            System.out.println("Terjadi Error");
+        }
+    }
+    
+    public void kosong(){
+        txtpetugas.setText("");
+        cmbpetugas.setSelectedIndex(0);
+        cmbkodebarang.setSelectedIndex(0);
+        txtnamabarang.setText("");
+        txthargajual.setText("");
+        txtjumlah.setText("");
+        txtstok.setText("");
+        txtsubtotal.setText("");
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -236,12 +331,27 @@ public class penjualan extends javax.swing.JFrame {
         jPanel8.add(btnclose, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 620, -1, -1));
 
         btnaddnew.setText("Add New");
+        btnaddnew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnaddnewActionPerformed(evt);
+            }
+        });
         jPanel8.add(btnaddnew, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 620, -1, -1));
 
         btnsave.setText("Save Transaction");
+        btnsave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsaveActionPerformed(evt);
+            }
+        });
         jPanel8.add(btnsave, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 620, 130, -1));
 
         btncancel.setText("Cancel");
+        btncancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncancelActionPerformed(evt);
+            }
+        });
         jPanel8.add(btncancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 620, -1, -1));
 
         jLabel1.setText("Total Rp");
@@ -260,6 +370,12 @@ public class penjualan extends javax.swing.JFrame {
             }
         });
         jPanel8.add(txttotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 690, 220, -1));
+
+        txtbayar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtbayarActionPerformed(evt);
+            }
+        });
         jPanel8.add(txtbayar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 630, 220, -1));
 
         txtsisa.setEnabled(false);
@@ -285,6 +401,7 @@ public class penjualan extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     public void nofaktur() {
     Date sk = new Date();
     SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
@@ -340,18 +457,98 @@ public class penjualan extends javax.swing.JFrame {
         }
     }
     
+    
+    
+    public void SetEditOff(){
+        txtnofaktur.setEnabled(false); 
+        txttanggal.setEnabled(false); 
+        cmbpetugas.setEnabled(false); 
+        cmbkodebarang.setEnabled(false); 
+        txtjumlah.setEnabled(false); 
+        btnhitung.setEnabled(false); 
+        btncaridata.setEnabled(false); 
+        btnadditem.setEnabled(false);
+        txtbayar.setText("0");
+        txtsisa.setText("0");
+        txttotal.setText("0");
+    }
+    
+    public void SetEditOn(){
+        txtnofaktur.setEnabled(true); 
+        txttanggal.setEnabled(true); 
+        cmbpetugas.setEnabled(true); 
+        cmbkodebarang.setEnabled(true); 
+        txtjumlah.setEnabled(true); 
+        btnsave.setEnabled(true); 
+        btncaridata.setEnabled(true); 
+        btnhitung.setEnabled(true); 
+        btnadditem.setEnabled(true);
+        txtbayar.setText("0");
+        txtsisa.setText("0");
+        txttotal.setText("0");
+    }
+    
+    
+    
+    
     private void cmbkodebarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbkodebarangActionPerformed
         // TODO add your handling code here:
 
     }//GEN-LAST:event_cmbkodebarangActionPerformed
-
+    
     private void btnadditemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnadditemActionPerformed
         // TODO add your handling code here:
-
+        String NM=txtnofaktur.getText();
+        String KB=cmbkodebarang.getSelectedItem().toString();
+        String JM=txtjumlah.getText();
+        
+        cmbkodebarang.requestFocus();
+        
+        if ((NM.isEmpty()) | (KB.isEmpty()) |(JM.isEmpty())) {
+           JOptionPane.showMessageDialog(null,"data tidak boleh kosong, silahkan dilengkapi");
+        }else {
+            try{
+                Connection con = koneksi.getKoneksi();
+                Statement stt = con.createStatement();
+                String SQL = "insert into tbldetailpenjualan values('"+txtnofaktur.getText()+"',"+
+                "'"+cmbkodebarang.getSelectedItem()+"',"+
+                "'"+txtjumlah.getText()+"',"+
+                "'"+txttotal.getText()+"')";
+                stt.executeUpdate(SQL);
+               
+                Connection con1 = koneksi.getKoneksi();
+                Statement stt1 = con.createStatement();
+                String SQL1 = "Update tblbarang Set stok=stok - '"+txtjumlah.getText()+"'" +
+                "Where kodebarang='"+cmbkodebarang.getSelectedItem().toString()+"'";
+                stt1.executeUpdate(SQL1);
+               
+                
+                data[0] = cmbkodebarang.getSelectedItem().toString();
+                data[1] = txtnamabarang.getText();
+                data[2] = txthargajual.getText();
+                data[3] = txtstok.getText();
+                data[4] = txtjumlah.getText();
+                data[5] = txtsubtotal.getText();
+                tableModel.insertRow(0, data);
+                
+                totalBiaya();
+                stt.close();
+                con.close();
+                cmbkodebarang.requestFocus();
+                btnadditem.setEnabled(false);
+                btnsave.setEnabled(true);
+                kosong();
+                cmbkodebarang.requestFocus();
+                
+            } catch(Exception ex){
+                 System.out.println("Terjadi Error: "+ex.getMessage());
+            }
+        }
     }//GEN-LAST:event_btnadditemActionPerformed
 
     private void btncloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncloseActionPerformed
         // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_btncloseActionPerformed
 
     private void txttotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttotalActionPerformed
@@ -408,6 +605,66 @@ public class penjualan extends javax.swing.JFrame {
         c = a * b; 
         txtsubtotal.setText(String.format("%.2f", c));
     }//GEN-LAST:event_btnhitungActionPerformed
+
+    private void txtbayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbayarActionPerformed
+        // TODO add your handling code here:
+        int a;
+        double b;
+        double c;   
+        a = Integer.parseInt(txtbayar.getText());
+        b = Double.parseDouble(txttotal.getText());
+        c = a - b; 
+        txtsisa.setText(String.format("%.2f", c));
+    }//GEN-LAST:event_txtbayarActionPerformed
+
+    private void btnaddnewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddnewActionPerformed
+        // TODO add your handling code here:
+        SetEditOn(); 
+        kosong();
+        txtnofaktur.requestFocus();  
+        nofaktur();
+    }//GEN-LAST:event_btnaddnewActionPerformed
+
+    private void btncancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelActionPerformed
+        // TODO add your handling code here:
+        kosong();
+        SetEditOff();
+    }//GEN-LAST:event_btncancelActionPerformed
+
+    private void btnsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsaveActionPerformed
+        // TODO add your handling code here:
+        String NM = txtnofaktur.getText();
+
+            if (NM.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Data tidak boleh kosong, silahkan dilengkapi");
+                txtnofaktur.requestFocus();
+            } else {
+                try {
+                    Connection con = koneksi.getKoneksi();
+                    String SQL = "INSERT INTO tblpenjualan VALUES (?, ?, ?, ?, ?, ?)";
+                    PreparedStatement ps = con.prepareStatement(SQL);
+
+                    ps.setString(1, txtnofaktur.getText());
+                    ps.setString(2, txttanggal.getText());
+                    ps.setString(3, String.valueOf(cmbpetugas.getSelectedItem()));
+                    ps.setString(4, txtbayar.getText());
+                    ps.setString(5, txtsisa.getText());
+                    ps.setString(6, txtsubtotal.getText());
+
+                    ps.executeUpdate();
+
+                    ps.close();
+                    con.close();
+
+                    kosong();
+                    SetEditOff();
+                    btnsave.setEnabled(false);
+                } catch (SQLException ex) {
+                    System.err.println(ex.getMessage());
+                }
+            }
+
+    }//GEN-LAST:event_btnsaveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -486,6 +743,8 @@ public class penjualan extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField txttanggal;
     private javax.swing.JTextField txttotal;
     // End of variables declaration//GEN-END:variables
+
+
 
 
 
