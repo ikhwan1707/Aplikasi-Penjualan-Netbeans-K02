@@ -1,11 +1,11 @@
 
-import javax.swing.JOptionPane;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+    import javax.swing.JOptionPane;
+    
 /**
  *
  * @author SMKI Utama3
@@ -72,6 +72,8 @@ public class login extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Sitka Text", 0, 12)); // NOI18N
         jLabel3.setText("Password");
 
+        btnlogin.setBackground(new java.awt.Color(0, 102, 140));
+        btnlogin.setForeground(new java.awt.Color(255, 255, 255));
         btnlogin.setText("Login");
         btnlogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,7 +99,7 @@ public class login extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(106, 106, 106)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,11 +113,11 @@ public class login extends javax.swing.JFrame {
                 .addComponent(txtuser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
-                .addGap(14, 14, 14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(27, 27, 27)
                 .addComponent(btnlogin)
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -137,7 +139,7 @@ public class login extends javax.swing.JFrame {
         String username, password = new String ("");
         username = txtuser.getText();
         password =new String (txtpassword.getPassword());
-            boolean Pernyataan = username.equals("Admin") && password.equals("12345");
+            boolean Pernyataan = username.equals("admin") && password.equals("12345");
             
             if (Pernyataan == true){
                JOptionPane.showMessageDialog(null, " selamat username " + username + "\npassword " + password + "\nberhasil login ", "Informasi Login", JOptionPane.DEFAULT_OPTION);
