@@ -4,6 +4,13 @@
  */
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.sql.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
 /**
  *
  * @author SMKI Utama8
@@ -15,7 +22,7 @@ public class penjualan extends javax.swing.JFrame {
      */
     public penjualan() {
         initComponents();
-    
+        nofaktur();
         
         // Mendapatkan tanggal saat ini
         Date date = new Date();
@@ -25,8 +32,9 @@ public class penjualan extends javax.swing.JFrame {
         String tanggal = dateFormat.format(date);
         // Menetapkan tanggal ke dalam JFormattedTextField
         txttanggal.setText(tanggal);
-        
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -100,7 +108,18 @@ public class penjualan extends javax.swing.JFrame {
         jPanel8.add(txtpetugas, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, 310, -1));
 
         cmbpetugas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Data Petugas" }));
+        cmbpetugas.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbpetugasItemStateChanged(evt);
+            }
+        });
         jPanel8.add(cmbpetugas, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 200, -1));
+
+        txttanggal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txttanggalActionPerformed(evt);
+            }
+        });
         jPanel8.add(txttanggal, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, 200, -1));
 
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Data Barang"));
@@ -254,6 +273,27 @@ public class penjualan extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void nofaktur() {
+    Date sk = new Date();
+    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
+    String time = format1.format(sk);
+
+    try {
+        Connection c = koneksi.getKoneksi();
+        String sql = "select right(nofaktur,1) as KodeBarang from tblpenjualan order by KodeBarang desc";
+        PreparedStatement p = c.prepareStatement(sql);
+        ResultSet rs = p.executeQuery(); // Menggunakan objek PreparedStatement "p" untuk eksekusi query
+        if (rs.next()) {
+            int kode = Integer.parseInt(rs.getString("kd")) + 1;
+            txtnofaktur.setText(time + Integer.toString(kode));
+        } else {
+            int kode = 1;
+            txtnofaktur.setText(time + Integer.toString(kode));
+        }
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, e);
+    }
+}
     private void cmbkodebarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbkodebarangActionPerformed
         // TODO add your handling code here:
 
@@ -279,6 +319,23 @@ public class penjualan extends javax.swing.JFrame {
     private void btncaridataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncaridataActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btncaridataActionPerformed
+
+    private void txttanggalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttanggalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txttanggalActionPerformed
+
+    private void cmbpetugasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbpetugasItemStateChanged
+        // TODO add your handling code here:
+        try {
+            Connection c = koneksi.getKoneksi();
+            String sql = "SELECT * FROM tblpetugas where idpetugas='"+ cmbpetugas.getSelectedItem().toString()+"'";
+            PreparedStatement p = c.prepareStatement(sql);
+            ResultSet rs = p.executeQuery();
+            rs.absolute(1);
+            txtpetugas.setText(rs.getString("namapetugas"));
+            } catch (SQLException ex) {
+        }
+    }//GEN-LAST:event_cmbpetugasItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -357,4 +414,6 @@ public class penjualan extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField txttanggal;
     private javax.swing.JTextField txttotal;
     // End of variables declaration//GEN-END:variables
+
+
 }
