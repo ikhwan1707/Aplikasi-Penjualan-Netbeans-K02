@@ -24,6 +24,8 @@ public class barangmasuk extends javax.swing.JFrame {
      */
     public barangmasuk() {
         initComponents();
+        TampilComboPetugas();
+        TampilComboBarang();
     }
 
     /**
@@ -111,6 +113,11 @@ public class barangmasuk extends javax.swing.JFrame {
         getContentPane().add(btncaridata, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 68, 120, -1));
 
         combopetugas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Petugas" }));
+        combopetugas.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                combopetugasItemStateChanged(evt);
+            }
+        });
         getContentPane().add(combopetugas, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 97, 221, -1));
         getContentPane().add(txtnamapetugas, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 125, 399, -1));
 
@@ -119,7 +126,7 @@ public class barangmasuk extends javax.swing.JFrame {
         getContentPane().add(txtnamadistributor, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 181, 399, -1));
         getContentPane().add(txtkota, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 209, 399, -1));
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Detail Barang Masuk"));
         jPanel1.setName("Detail Barang Masuk"); // NOI18N
 
         jLabel9.setText("Kode Barang");
@@ -129,6 +136,11 @@ public class barangmasuk extends javax.swing.JFrame {
         jLabel11.setText("Harga Jual");
 
         combokodebarang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Data Barang" }));
+        combokodebarang.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                combokodebarangItemStateChanged(evt);
+            }
+        });
 
         jLabel12.setText("Rp");
 
@@ -257,9 +269,65 @@ public class barangmasuk extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void TampilComboPetugas(){
+        try {
+            Connection c = koneksi.getKoneksi();
+            String sql = "SELECT * FROM tblpetugas";
+            PreparedStatement p = c.prepareStatement(sql);
+            ResultSet rs = p.executeQuery();
+            while(rs.next()){
+                combopetugas.addItem(rs.getString("IDPetugas"));
+            }
+        } catch (SQLException ex) {
+             System.out.println("Terjadi Error"+ex.getMessage());
+        }
+    }
+    
+    
+    public void TampilComboBarang(){
+        try {
+            Connection c = koneksi.getKoneksi();
+            String sql = "SELECT * FROM tblbarang";
+            PreparedStatement p = c.prepareStatement(sql);
+            ResultSet rs = p.executeQuery();
+            while(rs.next()){
+                combokodebarang.addItem(rs.getString("KodeBarang"));
+            }
+        } catch (SQLException ex) {
+             System.out.println("Terjadi Error"+ex.getMessage());
+        }
+    }
     private void txttotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttotalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txttotalActionPerformed
+
+    private void combokodebarangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_combokodebarangItemStateChanged
+        // TODO add your handling code here:
+        try {
+            Connection c = koneksi.getKoneksi();
+            String sql = "SELECT * FROM tblbarang where KodeBarang='"+ combokodebarang.getSelectedItem().toString()+"'";
+            PreparedStatement p = c.prepareStatement(sql);
+            ResultSet rs = p.executeQuery();
+            rs.absolute(1);
+            txtnamabarang.setText(rs.getString("namabarang"));
+            txthargajual.setText(rs.getString("hargajual"));
+            txtstok.setText(rs.getString("stok"));
+            } catch (SQLException ex) {
+        }
+    }//GEN-LAST:event_combokodebarangItemStateChanged
+
+    private void combopetugasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_combopetugasItemStateChanged
+        // TODO add your handling code here:
+        try {
+            Connection c = koneksi.getKoneksi();
+            String sql = "SELECT * FROM tblpetugas where idpetugas='"+ combopetugas.getSelectedItem().toString()+"'";
+            PreparedStatement p = c.prepareStatement(sql);
+            ResultSet rs = p.executeQuery();
+            rs.absolute(1);
+            txtnamapetugas.setText(rs.getString("namapetugas"));
+            } catch (SQLException ex) {
+        }
+    }//GEN-LAST:event_combopetugasItemStateChanged
 
     /**
      * @param args the command line arguments
