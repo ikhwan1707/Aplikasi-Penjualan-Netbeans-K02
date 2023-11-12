@@ -121,10 +121,20 @@ public class penjualan extends javax.swing.JFrame {
             System.out.println("Terjadi Error");
         }
     }
-    
-    public void kosong(){
+    public void BersihDetail(){
         txtpetugas.setText("");
-        cmbpetugas.setSelectedIndex(0);
+        IDPetugas.setSelectedIndex(0);
+        cmbkodebarang.setSelectedIndex(0);
+        txtnamabarang.setText("");
+        txthargajual.setText("");
+        txtjumlah.setText("");
+        txtstok.setText("");
+        txtsubtotal.setText("");
+    }
+    public void kosong(){
+         tableModel.setRowCount(0);
+        txtpetugas.setText("");
+        IDPetugas.setSelectedIndex(0);
         cmbkodebarang.setSelectedIndex(0);
         txtnamabarang.setText("");
         txthargajual.setText("");
@@ -149,7 +159,6 @@ public class penjualan extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txtpetugas = new javax.swing.JTextField();
-        cmbpetugas = new javax.swing.JComboBox<>();
         txttanggal = new javax.swing.JFormattedTextField();
         jPanel9 = new javax.swing.JPanel();
         cmbkodebarang = new javax.swing.JComboBox<>();
@@ -182,6 +191,7 @@ public class penjualan extends javax.swing.JFrame {
         txtbayar = new javax.swing.JTextField();
         txtsisa = new javax.swing.JTextField();
         btncaridata = new javax.swing.JButton();
+        IDPetugas = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -203,14 +213,6 @@ public class penjualan extends javax.swing.JFrame {
 
         txtpetugas.setEnabled(false);
         jPanel8.add(txtpetugas, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, 310, -1));
-
-        cmbpetugas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Data Petugas" }));
-        cmbpetugas.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbpetugasItemStateChanged(evt);
-            }
-        });
-        jPanel8.add(cmbpetugas, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 200, -1));
 
         txttanggal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -394,6 +396,14 @@ public class penjualan extends javax.swing.JFrame {
         });
         jPanel8.add(btncaridata, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, -1, -1));
 
+        IDPetugas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PIlih Petugas" }));
+        IDPetugas.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                IDPetugasItemStateChanged(evt);
+            }
+        });
+        jPanel8.add(IDPetugas, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 210, -1));
+
         jScrollPane3.setViewportView(jPanel8);
 
         getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 790, 420));
@@ -404,36 +414,51 @@ public class penjualan extends javax.swing.JFrame {
     
     public void nofaktur() {
     Date sk = new Date();
-    SimpleDateFormat format1 = new SimpleDateFormat("yyMMdd");
-    String time = format1.format(sk);
 
-    try {
-        Connection c = koneksi.getKoneksi();
-        String sql = "select right(nofaktur,1) as KodeBarang from tblpenjualan order by KodeBarang desc";
-        PreparedStatement p = c.prepareStatement(sql);
-        ResultSet rs = p.executeQuery(); // Menggunakan objek PreparedStatement "p" untuk eksekusi query
-        if (rs.next()) {
-            int kode = Integer.parseInt(rs.getString("KodeBarang")) + 1;
-            txtnofaktur.setText(time + Integer.toString(kode));
-        } else {
-            int kode = 1;
-            txtnofaktur.setText(time + Integer.toString(kode));
+        SimpleDateFormat format1=new SimpleDateFormat("yyMMdd");
+        String time = format1.format(sk);
+        
+        
+        try{
+            String sql = "select right(NoFaktur ,1) as kd from tblpenjualan order by kd desc";
+            Connection c = koneksi.getKoneksi(); 
+            Statement s = c.createStatement();       
+            ResultSet rs = s.executeQuery(sql);
+                if (rs.next()){
+
+                    int kode = Integer.parseInt(rs.getString("kd"))+1;
+
+                    txtnofaktur.setText(time+Integer.toString(kode));
+
+                }else{
+
+                    int kode = 1;
+
+                    txtnofaktur.setText(time+Integer.toString(kode));
+
+                }
+            
+
+        }catch (SQLException | NumberFormatException e){
+
+            JOptionPane.showMessageDialog(null, e);
+
         }
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(null, e);
-    }
 }
     
     
     
     public void TampilComboPetugas(){
         try {
-            Connection c = koneksi.getKoneksi();
-            String sql = "SELECT * FROM tblpetugas";
-            PreparedStatement p = c.prepareStatement(sql);
-            ResultSet rs = p.executeQuery();
-            while(rs.next()){
-                cmbpetugas.addItem(rs.getString("IDPetugas"));
+            
+            String SQL = "SELECT * FROM tblpetugas";
+            
+            Connection kon = koneksi.getKoneksi();
+            Statement stt = kon.createStatement();
+           
+            ResultSet res = stt.executeQuery(SQL);
+            while(res.next()){
+                IDPetugas.addItem(res.getString("IDPetugas"));
             }
         } catch (SQLException ex) {
              System.out.println("Terjadi Error"+ex.getMessage());
@@ -462,7 +487,7 @@ public class penjualan extends javax.swing.JFrame {
     public void SetEditOff(){
         txtnofaktur.setEnabled(false); 
         txttanggal.setEnabled(false); 
-        cmbpetugas.setEnabled(false); 
+        IDPetugas.setEnabled(false); 
         cmbkodebarang.setEnabled(false); 
         txtjumlah.setEnabled(false); 
         btnhitung.setEnabled(false); 
@@ -476,7 +501,7 @@ public class penjualan extends javax.swing.JFrame {
     public void SetEditOn(){
         txtnofaktur.setEnabled(true); 
         txttanggal.setEnabled(true); 
-        cmbpetugas.setEnabled(true); 
+        IDPetugas.setEnabled(true); 
         cmbkodebarang.setEnabled(true); 
         txtjumlah.setEnabled(true); 
         btnsave.setEnabled(true); 
@@ -536,7 +561,7 @@ public class penjualan extends javax.swing.JFrame {
                 cmbkodebarang.requestFocus();
                 btnadditem.setEnabled(false);
                 btnsave.setEnabled(true);
-                kosong();
+                BersihDetail();
                 cmbkodebarang.requestFocus();
                 
             } catch(Exception ex){
@@ -569,7 +594,7 @@ public class penjualan extends javax.swing.JFrame {
             res.absolute(1);
 //          TampilGridDetail();
             txttanggal.setText(res.getString("TglPenjualan"));
-            cmbpetugas.setSelectedItem(res.getString("IDPetugas"));
+            IDPetugas.setSelectedItem(res.getString("IDPetugas"));
             txtbayar.setText(res.getString("Bayar"));
             txtsisa.setText(res.getString("Sisa"));
             txttotal.setText(res.getString("Total"));
@@ -584,19 +609,6 @@ public class penjualan extends javax.swing.JFrame {
     private void txttanggalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttanggalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txttanggalActionPerformed
-
-    private void cmbpetugasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbpetugasItemStateChanged
-        // TODO add your handling code here:
-         try {
-            Connection c = koneksi.getKoneksi();
-            String sql = "SELECT * FROM tblpetugas where IDPetugas='"+ cmbpetugas.getSelectedItem().toString()+"'";
-            PreparedStatement p = c.prepareStatement(sql);
-            ResultSet rs = p.executeQuery();
-            rs.absolute(1);
-            txtpetugas.setText(rs.getString("NamaPetugas"));
-            } catch (SQLException ex) {
-        }
-    }//GEN-LAST:event_cmbpetugasItemStateChanged
 
     private void cmbkodebarangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbkodebarangItemStateChanged
         // TODO add your handling code here:
@@ -656,7 +668,8 @@ public class penjualan extends javax.swing.JFrame {
     private void btnsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsaveActionPerformed
         // TODO add your handling code here:
         String NM = txtnofaktur.getText();
-
+        String IP=IDPetugas.getSelectedItem().toString();
+        
             if ((NM.isEmpty())) {
             JOptionPane.showMessageDialog(null,"data tidak boleh kosong, silahkan dilengkapi");
             txtnofaktur.requestFocus();
@@ -667,7 +680,7 @@ public class penjualan extends javax.swing.JFrame {
                 Statement stt = con.createStatement();
                 String SQL = "insert into tblpenjualan values('"+txtnofaktur.getText()+"',"+
                 "'"+txttanggal.getText()+"',"+
-                "'"+cmbpetugas.getSelectedItem()+"',"+
+                "'"+IP+"',"+
                 "'"+txtbayar.getText()+"',"+
                 "'"+txtsisa.getText()+"',"+
                 "'"+txttotal.getText()+"')";
@@ -684,6 +697,21 @@ public class penjualan extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnsaveActionPerformed
+
+    private void IDPetugasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_IDPetugasItemStateChanged
+        // TODO add your handling code here:
+        try {
+            String SQL = "SELECT * FROM tblpetugas where IDPetugas='"+ IDPetugas.getSelectedItem().toString()+"'";
+            
+            Connection kon = koneksi.getKoneksi();
+            Statement stt = kon.createStatement();
+            
+            ResultSet res = stt.executeQuery(SQL);
+            res.absolute(1);
+            txtpetugas.setText(res.getString("NamaPetugas"));
+            } catch (SQLException ex) {
+        }
+    }//GEN-LAST:event_IDPetugasItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -721,6 +749,7 @@ public class penjualan extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> IDPetugas;
     private javax.swing.JButton btnadditem;
     private javax.swing.JButton btnaddnew;
     private javax.swing.JButton btncancel;
@@ -729,7 +758,6 @@ public class penjualan extends javax.swing.JFrame {
     private javax.swing.JButton btnhitung;
     private javax.swing.JButton btnsave;
     private javax.swing.JComboBox<String> cmbkodebarang;
-    private javax.swing.JComboBox<String> cmbpetugas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
