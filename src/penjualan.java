@@ -513,7 +513,7 @@ public class penjualan extends javax.swing.JFrame {
                 String SQL = "insert into tbldetailpenjualan values('"+txtnofaktur.getText()+"',"+
                 "'"+cmbkodebarang.getSelectedItem()+"',"+
                 "'"+txtjumlah.getText()+"',"+
-                "'"+txttotal.getText()+"')";
+                "'"+txtsubtotal.getText()+"')";
                 stt.executeUpdate(SQL);
                
                 Connection con1 = koneksi.getKoneksi();
