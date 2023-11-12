@@ -413,7 +413,7 @@ public class penjualan extends javax.swing.JFrame {
         PreparedStatement p = c.prepareStatement(sql);
         ResultSet rs = p.executeQuery(); // Menggunakan objek PreparedStatement "p" untuk eksekusi query
         if (rs.next()) {
-            int kode = Integer.parseInt(rs.getString("kd")) + 1;
+            int kode = Integer.parseInt(rs.getString("KodeBarang")) + 1;
             txtnofaktur.setText(time + Integer.toString(kode));
         } else {
             int kode = 1;
@@ -518,7 +518,7 @@ public class penjualan extends javax.swing.JFrame {
                
                 Connection con1 = koneksi.getKoneksi();
                 Statement stt1 = con.createStatement();
-                String SQL1 = "Update tblbarang Set stok=stok - '"+txtjumlah.getText()+"'" +
+                String SQL1 = "Update tblbarang Set Stok=Stok - '"+txtjumlah.getText()+"'" +
                 "Where kodebarang='"+cmbkodebarang.getSelectedItem().toString()+"'";
                 stt1.executeUpdate(SQL1);
                
@@ -533,7 +533,6 @@ public class penjualan extends javax.swing.JFrame {
                 
                 totalBiaya();
                 stt.close();
-                con.close();
                 cmbkodebarang.requestFocus();
                 btnadditem.setEnabled(false);
                 btnsave.setEnabled(true);
@@ -548,6 +547,7 @@ public class penjualan extends javax.swing.JFrame {
 
     private void btncloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncloseActionPerformed
         // TODO add your handling code here:
+        if(JOptionPane.showConfirmDialog(null,"This application will be close \n if you press button OK","Information", JOptionPane.OK_CANCEL_OPTION,JOptionPane.INFORMATION_MESSAGE)==JOptionPane.OK_OPTION)
         this.dispose();
     }//GEN-LAST:event_btncloseActionPerformed
 
@@ -561,6 +561,24 @@ public class penjualan extends javax.swing.JFrame {
 
     private void btncaridataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncaridataActionPerformed
         // TODO add your handling code here:
+        try {
+            Connection con = koneksi.getKoneksi();
+            Statement stt = con.createStatement();
+            String SQL = "SELECT * FROM tblpenjualan where nofaktur='"+txtnofaktur.getText().toString()+"'";
+            ResultSet res = stt.executeQuery(SQL);
+            res.absolute(1);
+//          TampilGridDetail();
+            txttanggal.setText(res.getString("TglPenjualan"));
+            cmbpetugas.setSelectedItem(res.getString("IDPetugas"));
+            txtbayar.setText(res.getString("Bayar"));
+            txtsisa.setText(res.getString("Sisa"));
+            txttotal.setText(res.getString("Total"));
+            btnsave.setEnabled(false);
+            txtnofaktur.setEnabled(false);
+            btncaridata.setEnabled(false);
+            } catch (SQLException ex) {
+                 System.out.println("Terjadi Error"+ex.getMessage());
+        }
     }//GEN-LAST:event_btncaridataActionPerformed
 
     private void txttanggalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttanggalActionPerformed
@@ -571,11 +589,11 @@ public class penjualan extends javax.swing.JFrame {
         // TODO add your handling code here:
          try {
             Connection c = koneksi.getKoneksi();
-            String sql = "SELECT * FROM tblpetugas where idpetugas='"+ cmbpetugas.getSelectedItem().toString()+"'";
+            String sql = "SELECT * FROM tblpetugas where IDPetugas='"+ cmbpetugas.getSelectedItem().toString()+"'";
             PreparedStatement p = c.prepareStatement(sql);
             ResultSet rs = p.executeQuery();
             rs.absolute(1);
-            txtpetugas.setText(rs.getString("namapetugas"));
+            txtpetugas.setText(rs.getString("NamaPetugas"));
             } catch (SQLException ex) {
         }
     }//GEN-LAST:event_cmbpetugasItemStateChanged
@@ -588,9 +606,9 @@ public class penjualan extends javax.swing.JFrame {
             PreparedStatement p = c.prepareStatement(sql);
             ResultSet rs = p.executeQuery();
             rs.absolute(1);
-            txtnamabarang.setText(rs.getString("namabarang"));
-            txthargajual.setText(rs.getString("hargajual"));
-            txtstok.setText(rs.getString("stok"));
+            txtnamabarang.setText(rs.getString("NamaBarang"));
+            txthargajual.setText(rs.getString("HargaJual"));
+            txtstok.setText(rs.getString("Stok"));
             } catch (SQLException ex) {
         }
     }//GEN-LAST:event_cmbkodebarangItemStateChanged
@@ -608,13 +626,17 @@ public class penjualan extends javax.swing.JFrame {
 
     private void txtbayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbayarActionPerformed
         // TODO add your handling code here:
-        int a;
-        double b;
-        double c;   
-        a = Integer.parseInt(txtbayar.getText());
-        b = Double.parseDouble(txttotal.getText());
-        c = a - b; 
-        txtsisa.setText(String.format("%.2f", c));
+        double total, bayar, kembalian;
+        
+        total = Double.valueOf(txttotal.getText());
+        bayar = Double.valueOf(txtbayar.getText());
+        
+        if (total > bayar) {
+            JOptionPane.showMessageDialog(null, "Uang tidak cukup untuk melakukan pembayaran");
+        } else {
+            kembalian = bayar - total;
+            txtsisa.setText(String.format("%.2f", kembalian));
+        }
     }//GEN-LAST:event_txtbayarActionPerformed
 
     private void btnaddnewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddnewActionPerformed
@@ -635,34 +657,31 @@ public class penjualan extends javax.swing.JFrame {
         // TODO add your handling code here:
         String NM = txtnofaktur.getText();
 
-            if (NM.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Data tidak boleh kosong, silahkan dilengkapi");
-                txtnofaktur.requestFocus();
-            } else {
-                try {
-                    Connection con = koneksi.getKoneksi();
-                    String SQL = "INSERT INTO tblpenjualan VALUES (?, ?, ?, ?, ?, ?)";
-                    PreparedStatement ps = con.prepareStatement(SQL);
-
-                    ps.setString(1, txtnofaktur.getText());
-                    ps.setString(2, txttanggal.getText());
-                    ps.setString(3, String.valueOf(cmbpetugas.getSelectedItem()));
-                    ps.setString(4, txtbayar.getText());
-                    ps.setString(5, txtsisa.getText());
-                    ps.setString(6, txtsubtotal.getText());
-
-                    ps.executeUpdate();
-
-                    ps.close();
-                    con.close();
-
-                    kosong();
-                    SetEditOff();
-                    btnsave.setEnabled(false);
-                } catch (SQLException ex) {
-                    System.err.println(ex.getMessage());
-                }
+            if ((NM.isEmpty())) {
+            JOptionPane.showMessageDialog(null,"data tidak boleh kosong, silahkan dilengkapi");
+            txtnofaktur.requestFocus();
+        }else {
+            try {
+           
+                Connection con = koneksi.getKoneksi();
+                Statement stt = con.createStatement();
+                String SQL = "insert into tblpenjualan values('"+txtnofaktur.getText()+"',"+
+                "'"+txttanggal.getText()+"',"+
+                "'"+cmbpetugas.getSelectedItem()+"',"+
+                "'"+txtbayar.getText()+"',"+
+                "'"+txtsisa.getText()+"',"+
+                "'"+txttotal.getText()+"')";
+                stt.executeUpdate(SQL);
+                
+                stt.close();
+                
+                kosong();
+                SetEditOff();
+            btnsave.setEnabled(false);
+            } catch (Exception ex) {
+                System.err.println(ex.getMessage());
             }
+        }
 
     }//GEN-LAST:event_btnsaveActionPerformed
 
