@@ -42,8 +42,8 @@ public class MenuUtama extends javax.swing.JFrame {
         MenuDataPetugas = new javax.swing.JMenuItem();
         MenuExit = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        MenuBarangMasukT = new javax.swing.JMenuItem();
+        MenuPenjualanBarangT = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -94,16 +94,21 @@ public class MenuUtama extends javax.swing.JFrame {
 
         jMenu2.setText("Transaksi");
 
-        jMenuItem1.setText("Data Barang Masuk");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        MenuBarangMasukT.setText("Data Barang Masuk");
+        MenuBarangMasukT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                MenuBarangMasukTActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem1);
+        jMenu2.add(MenuBarangMasukT);
 
-        jMenuItem2.setText("Data Penjualan Barang");
-        jMenu2.add(jMenuItem2);
+        MenuPenjualanBarangT.setText("Data Penjualan Barang");
+        MenuPenjualanBarangT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuPenjualanBarangTActionPerformed(evt);
+            }
+        });
+        jMenu2.add(MenuPenjualanBarangT);
 
         jMenuBar1.add(jMenu2);
 
@@ -129,6 +134,7 @@ public class MenuUtama extends javax.swing.JFrame {
 
     private void MenuExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuExitActionPerformed
         // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_MenuExitActionPerformed
 
     private void MenuJenisBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuJenisBarangActionPerformed
@@ -138,6 +144,7 @@ public class MenuUtama extends javax.swing.JFrame {
 
     private void MenuDataBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuDataBarangActionPerformed
         // TODO add your handling code here:
+        new formbarang().setVisible(true);
     }//GEN-LAST:event_MenuDataBarangActionPerformed
 
     private void MenuDataDistributorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuDataDistributorActionPerformed
@@ -150,10 +157,15 @@ public class MenuUtama extends javax.swing.JFrame {
         new FormPetugas().setVisible(true);
     }//GEN-LAST:event_MenuDataPetugasActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void MenuBarangMasukTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuBarangMasukTActionPerformed
+        // TODO add your handling code here:
+        new barangmasuk().setVisible(true);
+    }//GEN-LAST:event_MenuBarangMasukTActionPerformed
+
+    private void MenuPenjualanBarangTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuPenjualanBarangTActionPerformed
         // TODO add your handling code here:
         new penjualan().setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_MenuPenjualanBarangTActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,15 +204,15 @@ public class MenuUtama extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Menu1;
+    private javax.swing.JMenuItem MenuBarangMasukT;
     private javax.swing.JMenuItem MenuDataBarang;
     private javax.swing.JMenuItem MenuDataDistributor;
     private javax.swing.JMenuItem MenuDataPetugas;
     private javax.swing.JMenuItem MenuExit;
     private javax.swing.JMenuItem MenuJenisBarang;
+    private javax.swing.JMenuItem MenuPenjualanBarangT;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     // End of variables declaration//GEN-END:variables
 }
