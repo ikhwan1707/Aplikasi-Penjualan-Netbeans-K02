@@ -26,8 +26,52 @@ public class barangmasuk extends javax.swing.JFrame {
         initComponents();
         TampilComboPetugas();
         TampilComboBarang();
+        TampilComboDistributor();
+        nonota();
+        
+        // Mendapatkan tanggal saat ini
+        Date date = new Date();
+        
+        // Format tanggal
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        String tanggal = dateFormat.format(date);
+        // Menetapkan tanggal ke dalam JFormattedTextField
+        txttglbrng.setText(tanggal);
     }
 
+    public void nonota() {
+    Date sk = new Date();
+
+        SimpleDateFormat format1=new SimpleDateFormat("yyMMdd");
+        String time = format1.format(sk);
+        
+        
+        try{
+            String sql = "select right(NoNota ,1) as kd from tblbrgmasuk order by kd desc";
+            Connection c = koneksi.getKoneksi(); 
+            Statement s = c.createStatement();       
+            ResultSet rs = s.executeQuery(sql);
+                if (rs.next()){
+
+                    int kode = Integer.parseInt(rs.getString("kd"))+1;
+
+                    txtnota.setText(time+Integer.toString(kode));
+
+                }else{
+
+                    int kode = 1;
+
+                    txtnota.setText(time+Integer.toString(kode));
+
+                }
+            
+
+        }catch (SQLException | NumberFormatException e){
+
+            JOptionPane.showMessageDialog(null, e);
+
+        }
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -106,6 +150,8 @@ public class barangmasuk extends javax.swing.JFrame {
 
         jLabel8.setText("Kota Asal");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 209, -1, -1));
+
+        txttglbrng.setEnabled(false);
         getContentPane().add(txttglbrng, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 40, 221, -1));
         getContentPane().add(txtnota, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 68, 89, -1));
 
@@ -122,6 +168,11 @@ public class barangmasuk extends javax.swing.JFrame {
         getContentPane().add(txtnamapetugas, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 125, 399, -1));
 
         combodistributor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Distributor" }));
+        combodistributor.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                combodistributorItemStateChanged(evt);
+            }
+        });
         getContentPane().add(combodistributor, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 153, 221, -1));
         getContentPane().add(txtnamadistributor, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 181, 399, -1));
         getContentPane().add(txtkota, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 209, 399, -1));
@@ -153,6 +204,11 @@ public class barangmasuk extends javax.swing.JFrame {
         btnitem.setText("Add Item");
 
         btnhitung.setText("Hitung");
+        btnhitung.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnhitungActionPerformed(evt);
+            }
+        });
 
         txtsubtotal.setText("0");
 
@@ -247,6 +303,11 @@ public class barangmasuk extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 520, 180));
 
         btnnew.setText("Add New");
+        btnnew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnnewActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnnew, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 600, 100, -1));
 
         btnsave.setText("Save Transaction");
@@ -297,6 +358,20 @@ public class barangmasuk extends javax.swing.JFrame {
              System.out.println("Terjadi Error"+ex.getMessage());
         }
     }
+    
+    public void TampilComboDistributor(){
+        try {
+            Connection c = koneksi.getKoneksi();
+            String sql = "SELECT * FROM tbldistributor";
+            PreparedStatement p = c.prepareStatement(sql);
+            ResultSet rs = p.executeQuery();
+            while(rs.next()){
+                combodistributor.addItem(rs.getString("IDDistributor"));
+            }
+        } catch (SQLException ex) {
+             System.out.println("Terjadi Error"+ex.getMessage());
+        }
+    }
     private void txttotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttotalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txttotalActionPerformed
@@ -328,6 +403,39 @@ public class barangmasuk extends javax.swing.JFrame {
             } catch (SQLException ex) {
         }
     }//GEN-LAST:event_combopetugasItemStateChanged
+
+    private void btnhitungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhitungActionPerformed
+        // TODO add your handling code here:
+        double a;
+        int b;
+        double c;   
+        a = Integer.parseInt(txthargajual.getText());
+        b = Integer.parseInt(txtjumlah.getText());
+        c = a * b; 
+        txtsubtotal.setText(String.format("%.2f", c));
+    }//GEN-LAST:event_btnhitungActionPerformed
+
+    private void btnnewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnewActionPerformed
+        // TODO add your handling code here:
+//        SetEditOn(); 
+//        kosong();
+//        txtnota.requestFocus();  
+//        nonota();
+//    }
+    }//GEN-LAST:event_btnnewActionPerformed
+
+    private void combodistributorItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_combodistributorItemStateChanged
+        // TODO add your handling code here:
+        try {
+            Connection c = koneksi.getKoneksi();
+            String sql = "SELECT * FROM tbldistributor where IDDistributor='"+ combodistributor.getSelectedItem().toString()+"'";
+            PreparedStatement p = c.prepareStatement(sql);
+            ResultSet rs = p.executeQuery();
+            rs.absolute(1);
+            txtnamadistributor.setText(rs.getString("NamaDistributor"));
+            } catch (SQLException ex) {
+        }
+    }//GEN-LAST:event_combodistributorItemStateChanged
 
     /**
      * @param args the command line arguments
