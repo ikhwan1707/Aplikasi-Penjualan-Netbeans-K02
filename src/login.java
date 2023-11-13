@@ -143,7 +143,7 @@ public class login extends javax.swing.JFrame {
             
             if (Pernyataan == true){
                JOptionPane.showMessageDialog(null, " selamat username " + username + "\npassword " + password + "\nberhasil login ", "Informasi Login", JOptionPane.DEFAULT_OPTION);
-               new formbarang().setVisible(true);
+               new MenuUtama().setVisible(true);
             }else{
                 JOptionPane.showConfirmDialog(null, "maaf user dan password salah", "login", JOptionPane.DEFAULT_OPTION); 
             }
