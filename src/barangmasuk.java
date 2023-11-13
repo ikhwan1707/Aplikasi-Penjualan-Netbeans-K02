@@ -1,6 +1,5 @@
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -28,6 +27,9 @@ public class barangmasuk extends javax.swing.JFrame {
         TampilComboBarang();
         TampilComboDistributor();
         nonota();
+        kosong();
+        SetEditOn();
+        SetEditOff();
         
         // Mendapatkan tanggal saat ini
         Date date = new Date();
@@ -45,33 +47,59 @@ public class barangmasuk extends javax.swing.JFrame {
         SimpleDateFormat format1=new SimpleDateFormat("yyMMdd");
         String time = format1.format(sk);
         
-        
         try{
             String sql = "select right(NoNota ,1) as kd from tblbrgmasuk order by kd desc";
             Connection c = koneksi.getKoneksi(); 
             Statement s = c.createStatement();       
             ResultSet rs = s.executeQuery(sql);
                 if (rs.next()){
-
                     int kode = Integer.parseInt(rs.getString("kd"))+1;
-
                     txtnota.setText(time+Integer.toString(kode));
-
                 }else{
-
                     int kode = 1;
-
                     txtnota.setText(time+Integer.toString(kode));
-
                 }
-            
-
         }catch (SQLException | NumberFormatException e){
-
             JOptionPane.showMessageDialog(null, e);
-
         }
-}
+    }
+    
+    public void kosong(){
+        txtnamapetugas.setText("");
+        combopetugas.setSelectedIndex(0);
+        combokodebarang.setSelectedIndex(0);
+        txtnamabarang.setText("");
+        txthargajual.setText("");
+        txtjumlah.setText("");
+        txtstok.setText("");
+        txtsubtotal.setText("");
+    }
+    
+    public void SetEditOff(){
+        txtnota.setEnabled(false); 
+        txttglbrng.setEnabled(false); 
+        combopetugas.setEnabled(false); 
+        combodistributor.setEnabled(false);
+        combokodebarang.setEnabled(false); 
+        txtjumlah.setEnabled(false); 
+        btnhitung.setEnabled(false); 
+        btncaridata.setEnabled(false); 
+        btnitem.setEnabled(false);
+        txttotal.setText("0");
+    }
+    
+    public void SetEditOn(){
+        txtnota.setEnabled(true); 
+        txttglbrng.setEnabled(true); 
+        combopetugas.setEnabled(true); 
+        combokodebarang.setEnabled(true); 
+        txtjumlah.setEnabled(true); 
+        btnsave.setEnabled(true); 
+        btncaridata.setEnabled(true); 
+        btnhitung.setEnabled(true); 
+        btnitem.setEnabled(true);
+        txttotal.setText("0");
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -234,26 +262,27 @@ public class barangmasuk extends javax.swing.JFrame {
                                 .addComponent(txthargajual, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel12)))))
-                .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnitem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel15))
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel13)
+                        .addGap(55, 55, 55)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtstok)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(txtjumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnhitung))))
+                                .addComponent(txtstok))
+                            .addComponent(txtsubtotal)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 1, Short.MAX_VALUE)
+                                .addComponent(txtjumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtsubtotal)))))
+                                .addComponent(btnhitung))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel14)
+                            .addComponent(btnitem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -280,12 +309,12 @@ public class barangmasuk extends javax.swing.JFrame {
                     .addComponent(jLabel12)
                     .addComponent(jLabel15)
                     .addComponent(txtsubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(btnitem)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 249, 528, 150));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 520, 150));
 
         tabelbarangmasuk.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -343,7 +372,6 @@ public class barangmasuk extends javax.swing.JFrame {
              System.out.println("Terjadi Error"+ex.getMessage());
         }
     }
-    
     
     public void TampilComboBarang(){
         try {
@@ -417,11 +445,10 @@ public class barangmasuk extends javax.swing.JFrame {
 
     private void btnnewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnewActionPerformed
         // TODO add your handling code here:
-//        SetEditOn(); 
-//        kosong();
-//        txtnota.requestFocus();  
-//        nonota();
-//    }
+          SetEditOn(); 
+          kosong();
+          txtnota.requestFocus();  
+          nonota();
     }//GEN-LAST:event_btnnewActionPerformed
 
     private void combodistributorItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_combodistributorItemStateChanged
