@@ -1,5 +1,3 @@
-
-
 import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -627,7 +625,7 @@ public class formbarang extends javax.swing.JFrame {
 
     private void btncloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncloseActionPerformed
         // TODO add your handling code here:
-        
+         dispose();
     }//GEN-LAST:event_btncloseActionPerformed
 
     private void cmbjenisItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbjenisItemStateChanged
