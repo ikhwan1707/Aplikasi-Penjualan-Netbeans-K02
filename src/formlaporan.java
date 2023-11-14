@@ -1,4 +1,15 @@
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -151,7 +162,21 @@ public class formlaporan extends javax.swing.JFrame {
 
     private void btnbarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbarangActionPerformed
         // TODO add your handling code here:
-        Connection c = koneksi.getKoneksi();
+        try{
+            Connection c = koneksi.getKoneksi();
+            JasperReport jasperReport = JasperCompileManager.compileReport("src/laporan/laporan_barang.jrxml");
+            Map<String, Object> parameters = new HashMap<>();
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, c);
+            
+            JasperViewer viewer = new JasperViewer(jasperPrint,false);
+            viewer.setTitle("LAPORAN PENJUALAN BARANG");
+            viewer.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            viewer.setVisible(true);
+            
+            //c.close();
+        } catch( JRException e){
+            JOptionPane.showMessageDialog(null, "Data tidak dapat dicetak!", "cetak data", JOptionPane.ERROR_MESSAGE);
+        }
         
         
 
