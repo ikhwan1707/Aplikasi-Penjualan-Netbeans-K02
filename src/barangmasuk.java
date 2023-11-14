@@ -77,9 +77,9 @@ public class barangmasuk extends javax.swing.JFrame {
     
     public void SetEditOff(){
         txtnota.setEnabled(false); 
-        txttglbrng.setEnabled(false); 
-        combopetugas.setEnabled(false); 
+        txttglbrng.setEnabled(false);
         combodistributor.setEnabled(false);
+        combopetugas.setEnabled(false); 
         combokodebarang.setEnabled(false); 
         txtjumlah.setEnabled(false); 
         btnhitung.setEnabled(false); 
@@ -98,6 +98,7 @@ public class barangmasuk extends javax.swing.JFrame {
         btncaridata.setEnabled(true); 
         btnhitung.setEnabled(true); 
         btnitem.setEnabled(true);
+        btnsave.setEnabled(true);
         txttotal.setText("0");
     }
     /**
@@ -184,6 +185,11 @@ public class barangmasuk extends javax.swing.JFrame {
         getContentPane().add(txtnota, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 68, 89, -1));
 
         btncaridata.setText("Cari Data");
+        btncaridata.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncaridataActionPerformed(evt);
+            }
+        });
         getContentPane().add(btncaridata, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 68, 120, -1));
 
         combopetugas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Petugas" }));
@@ -220,6 +226,11 @@ public class barangmasuk extends javax.swing.JFrame {
                 combokodebarangItemStateChanged(evt);
             }
         });
+        combokodebarang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combokodebarangActionPerformed(evt);
+            }
+        });
 
         jLabel12.setText("Rp");
 
@@ -230,6 +241,11 @@ public class barangmasuk extends javax.swing.JFrame {
         jLabel15.setText("Sub Total Rp");
 
         btnitem.setText("Add Item");
+        btnitem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnitemActionPerformed(evt);
+            }
+        });
 
         btnhitung.setText("Hitung");
         btnhitung.addActionListener(new java.awt.event.ActionListener() {
@@ -268,15 +284,15 @@ public class barangmasuk extends javax.swing.JFrame {
                         .addComponent(jLabel13)
                         .addGap(55, 55, 55)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(txtstok))
                             .addComponent(txtsubtotal)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGap(0, 1, Short.MAX_VALUE)
-                                .addComponent(txtjumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnhitung))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtstok)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(txtjumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btnhitung))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -340,9 +356,19 @@ public class barangmasuk extends javax.swing.JFrame {
         getContentPane().add(btnnew, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 600, 100, -1));
 
         btnsave.setText("Save Transaction");
+        btnsave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsaveActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnsave, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 600, 150, -1));
 
         btnclose.setText("Close");
+        btnclose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncloseActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnclose, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 600, -1, -1));
 
         jLabel16.setText("Total  Rp");
@@ -463,6 +489,127 @@ public class barangmasuk extends javax.swing.JFrame {
             } catch (SQLException ex) {
         }
     }//GEN-LAST:event_combodistributorItemStateChanged
+
+    private void btncloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncloseActionPerformed
+        // TODO add your handling code here:
+        if(JOptionPane.showConfirmDialog(null,"This application will be close \n if you press button OK","Information", JOptionPane.OK_CANCEL_OPTION,JOptionPane.INFORMATION_MESSAGE)==JOptionPane.OK_OPTION)
+        this.dispose();
+    }//GEN-LAST:event_btncloseActionPerformed
+
+    private void btncaridataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncaridataActionPerformed
+        // TODO add your handling code here:
+        try {
+            Connection con = koneksi.getKoneksi();
+            Statement stt = con.createStatement();
+            String SQL = "SELECT * FROM tblbrgmasuk where nonota='"+txtnota.getText().toString()+"'";
+            ResultSet res = stt.executeQuery(SQL);
+            res.absolute(1);
+//          TampilGridDetail();
+            txttglbrng.setText(res.getString("TglPenjualan"));
+            combopetugas.setSelectedItem(res.getString("IDPetugas"));
+            combodistributor.setSelectedItem(res.getString("IDDistributor"));
+            txttotal.setText(res.getString("Total"));
+            txtnota.setEnabled(false);
+            btncaridata.setEnabled(false);
+            } catch (SQLException ex) {
+                 System.out.println("Terjadi Error"+ex.getMessage());
+        }
+    }//GEN-LAST:event_btncaridataActionPerformed
+
+    private void btnitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnitemActionPerformed
+        // TODO add your handling code here:
+        String NM=txtnota.getText();
+        String KB=combokodebarang.getSelectedItem().toString();
+        String JM=txtjumlah.getText();
+        
+        combokodebarang.requestFocus();
+        
+        if ((NM.isEmpty()) | (KB.isEmpty()) |(JM.isEmpty())) {
+           JOptionPane.showMessageDialog(null,"data tidak boleh kosong, silahkan dilengkapi");
+        }else {
+            try{
+                Connection con = koneksi.getKoneksi();
+                Statement stt = con.createStatement();
+                String SQL = "insert into tbldetailpenjualan values('"+txtnota.getText()+"',"+
+                "'"+combokodebarang.getSelectedItem()+"',"+
+                "'"+txtjumlah.getText()+"',"+
+                "'"+txtsubtotal.getText()+"')";
+                stt.executeUpdate(SQL);
+               
+                Connection con1 = koneksi.getKoneksi();
+                Statement stt1 = con.createStatement();
+                String SQL1 = "Update tblbrgmasuk Set Stok=Stok - '"+txtjumlah.getText()+"'" +
+                "Where kodebarang='"+combokodebarang.getSelectedItem().toString()+"'";
+                stt1.executeUpdate(SQL1);
+               
+                
+//                data[0] = combokodebarang.getSelectedItem().toString();
+//                data[1] = txtnamabarang.getText();
+//                data[2] = txthargajual.getText();
+//                data[3] = txtstok.getText();
+//                data[4] = txtjumlah.getText();
+//                data[5] = txtsubtotal.getText();
+//                tableModel.insertRow(0, data);
+//                
+//                totalBiaya();
+//                stt.close();
+//                combokodebarang.requestFocus();
+//                btnadditem.setEnabled(false);
+//                btnsave.setEnabled(true);
+//                combokodebarang.requestFocus();
+                
+            } catch(Exception ex){
+                 System.out.println("Terjadi Error: "+ex.getMessage());
+            }
+        }
+        
+    }//GEN-LAST:event_btnitemActionPerformed
+
+    private void combokodebarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combokodebarangActionPerformed
+        // TODO add your handling code here:
+        try {
+            Connection c = koneksi.getKoneksi();
+            String sql = "SELECT * FROM tblbrgmasuk where KodeBarang='"+ combokodebarang.getSelectedItem().toString()+"'";
+            PreparedStatement p = c.prepareStatement(sql);
+            ResultSet rs = p.executeQuery();
+            rs.absolute(1);
+            txtnamabarang.setText(rs.getString("NamaBarang"));
+            txthargajual.setText(rs.getString("HargaJual"));
+            txtstok.setText(rs.getString("Stok"));
+            } catch (SQLException ex) {
+        }
+    }//GEN-LAST:event_combokodebarangActionPerformed
+
+    private void btnsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsaveActionPerformed
+        // TODO add your handling code here:
+        String NM = txtnota.getText();
+        String IP=combopetugas.getSelectedItem().toString();
+        
+            if ((NM.isEmpty())) {
+            JOptionPane.showMessageDialog(null,"data tidak boleh kosong, silahkan dilengkapi");
+            txtnota.requestFocus();
+        }else {
+            try {
+           
+                Connection con = koneksi.getKoneksi();
+                Statement stt = con.createStatement();
+                String SQL = "insert into tblbrgmasuk values('"+txtnota.getText()+"',"+
+                "'"+txttglbrng.getText()+"',"+
+                "'"+IP+"',"+
+                "'"+txttotal.getText()+"')";
+                stt.executeUpdate(SQL);
+                
+                stt.close();
+                
+                kosong();
+                SetEditOff();
+            btnsave.setEnabled(false);
+            } catch (Exception ex) {
+                System.err.println(ex.getMessage());
+            }
+        }
+
+    }//GEN-LAST:event_btnsaveActionPerformed
 
     /**
      * @param args the command line arguments
