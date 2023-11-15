@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dfb4097c-1815-42ed-84ac-33f65e6f4266">
-	<property name="ireport.zoom" value="1.3310000000000015"/>
+	<property name="ireport.zoom" value="1.6105100000000023"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="table">
@@ -47,61 +47,61 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="63" splitType="Stretch">
 			<staticText>
-				<reportElement x="155" y="23" width="248" height="33" uuid="3eec50d3-7f81-435f-b98f-9ac568290689"/>
+				<reportElement x="177" y="40" width="226" height="23" uuid="3eec50d3-7f81-435f-b98f-9ac568290689"/>
 				<textElement>
-					<font fontName="Times New Roman" size="24" isBold="true"/>
+					<font fontName="Times New Roman" size="16" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Laporan Data Barang]]></text>
+				<text><![CDATA[LAPORAN DATA BARANG]]></text>
 			</staticText>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band height="23" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
 		<band height="22" splitType="Stretch">
 			<rectangle>
-				<reportElement x="0" y="0" width="555" height="20" backcolor="#00CCCC" uuid="f9a935c9-8357-4f81-af17-eefbefcf6105"/>
+				<reportElement x="0" y="0" width="555" height="20" backcolor="#CCCCCC" uuid="f9a935c9-8357-4f81-af17-eefbefcf6105"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="26" y="0" width="88" height="20" forecolor="#FFFFFF" uuid="c7c90c26-0940-4a08-9c03-d304da17dfb0"/>
+				<reportElement x="26" y="0" width="88" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="c7c90c26-0940-4a08-9c03-d304da17dfb0"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" isBold="true"/>
 				</textElement>
-				<text><![CDATA[KodeBarang]]></text>
+				<text><![CDATA[Kode Barang]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="114" y="0" width="79" height="20" forecolor="#FFFFFF" uuid="e9948eb3-07a0-4b3b-9c2e-ad3639f2063f"/>
+				<reportElement x="114" y="0" width="79" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="e9948eb3-07a0-4b3b-9c2e-ad3639f2063f"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" isBold="true"/>
 				</textElement>
-				<text><![CDATA[NamaBarang]]></text>
+				<text><![CDATA[Nama Barang]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="203" y="0" width="100" height="20" forecolor="#FFFFFF" uuid="92c4a805-9c65-4de5-80b1-9cc2217821ff"/>
+				<reportElement x="203" y="0" width="100" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="92c4a805-9c65-4de5-80b1-9cc2217821ff"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" isBold="true"/>
 				</textElement>
-				<text><![CDATA[KodeJenis]]></text>
+				<text><![CDATA[Kode Jenis]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="303" y="0" width="100" height="20" forecolor="#FFFFFF" uuid="0011ea76-7622-47e7-9d09-40b6a51610af"/>
+				<reportElement x="303" y="0" width="100" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="0011ea76-7622-47e7-9d09-40b6a51610af"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" isBold="true"/>
 				</textElement>
-				<text><![CDATA[HargaNet]]></text>
+				<text><![CDATA[Harga Net]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="402" y="0" width="100" height="20" forecolor="#FFFFFF" uuid="699ca659-b1b5-47af-a762-c0672729a5e5"/>
+				<reportElement x="402" y="0" width="100" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="699ca659-b1b5-47af-a762-c0672729a5e5"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" isBold="true"/>
 				</textElement>
-				<text><![CDATA[HargaJual]]></text>
+				<text><![CDATA[Harga Jual]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="501" y="0" width="54" height="20" forecolor="#FFFFFF" uuid="7f4780b0-27d6-4ea7-90c8-f7bbcf895e4f"/>
+				<reportElement x="501" y="0" width="54" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="7f4780b0-27d6-4ea7-90c8-f7bbcf895e4f"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" isBold="true"/>
 				</textElement>
