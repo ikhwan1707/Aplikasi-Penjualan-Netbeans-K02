@@ -518,51 +518,58 @@ public class barangmasuk extends javax.swing.JFrame {
 
     private void btnitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnitemActionPerformed
         // TODO add your handling code here:
-        String NM=txtnota.getText();
-        String KB=combokodebarang.getSelectedItem().toString();
-        String JM=txtjumlah.getText();
+        String NT = txtnota.getText();
+        String KB = combokodebarang.getSelectedItem().toString();
+        String JM = txtjumlah.getText();
         
+        int a, b, c;
+        a = Integer.parseInt(txthargajual.getText());
+        b = Integer.parseInt(txtjumlah.getText());
+        c = a*b;
+
+        txttotal.setText(Integer.toString(c));
+        
+       
+        if ((NT.isEmpty()) | (KB.isEmpty()) |(JM.isEmpty())) {
+        JOptionPane.showMessageDialog(null,"data tidak boleh kosong, silahkan dilengkapi");
         combokodebarang.requestFocus();
-        
-        if ((NM.isEmpty()) | (KB.isEmpty()) |(JM.isEmpty())) {
-           JOptionPane.showMessageDialog(null,"data tidak boleh kosong, silahkan dilengkapi");
         }else {
             try{
-                Connection con = koneksi.getKoneksi();
-                Statement stt = con.createStatement();
-                String SQL = "insert into tbldetailpenjualan values('"+txtnota.getText()+"',"+
+                Connection kon = koneksi.getKoneksi();
+                Statement stt = kon.createStatement();
+                String SQL = "insert into tbldetailbrgmasuk values('"+txtnota.getText()+"',"+
                 "'"+combokodebarang.getSelectedItem()+"',"+
                 "'"+txtjumlah.getText()+"',"+
                 "'"+txtsubtotal.getText()+"')";
                 stt.executeUpdate(SQL);
                
-                Connection con1 = koneksi.getKoneksi();
-                Statement stt1 = con.createStatement();
-                String SQL1 = "Update tblbrgmasuk Set Stok=Stok - '"+txtjumlah.getText()+"'" +
-                "Where kodebarang='"+combokodebarang.getSelectedItem().toString()+"'";
+                Connection kon1 = koneksi.getKoneksi();
+                Statement stt1 = kon1.createStatement();
+                String SQL1 = "Update tblbarang Set stok=stok - '"+txtjumlah.getText()+"'" +
+                "Where KodeBarang='"+combokodebarang.getSelectedItem().toString()+"'";
                 stt1.executeUpdate(SQL1);
                
-                
-//                data[0] = combokodebarang.getSelectedItem().toString();
-//                data[1] = txtnamabarang.getText();
-//                data[2] = txthargajual.getText();
-//                data[3] = txtstok.getText();
-//                data[4] = txtjumlah.getText();
-//                data[5] = txtsubtotal.getText();
-//                tableModel.insertRow(0, data);
+                String data[] = new String[6];
+                data[0] = combokodebarang.getSelectedItem().toString();
+                data[1] = txtnamabarang.getText();
+                data[2] = txthargajual.getText();
+                data[3] = txtstok.getText();
+                data[4] = txtjumlah.getText();
+                data[5] = txtsubtotal.getText();
+//                tabelbarangmasuk.insertRow(0, data);
 //                
 //                totalBiaya();
 //                stt.close();
-//                combokodebarang.requestFocus();
-//                btnadditem.setEnabled(false);
-//                btnsave.setEnabled(true);
-//                combokodebarang.requestFocus();
-                
+//              kon.close();
+                combokodebarang.requestFocus();
+                btnitem.setEnabled(false);
+                btnsave.setEnabled(true);
+//                BersihDetail();
+                combokodebarang.requestFocus();
             } catch(Exception ex){
-                 System.out.println("Terjadi Error: "+ex.getMessage());
+                 System.out.println("Terjadi Error"+ex.getMessage());
             }
         }
-        
     }//GEN-LAST:event_btnitemActionPerformed
 
     private void combokodebarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combokodebarangActionPerformed
@@ -583,7 +590,8 @@ public class barangmasuk extends javax.swing.JFrame {
     private void btnsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsaveActionPerformed
         // TODO add your handling code here:
         String NM = txtnota.getText();
-        String IP=combopetugas.getSelectedItem().toString();
+        String IP = combopetugas.getSelectedItem().toString();
+        String PI = combodistributor.getSelectedItem().toString();
         
             if ((NM.isEmpty())) {
             JOptionPane.showMessageDialog(null,"data tidak boleh kosong, silahkan dilengkapi");
@@ -596,6 +604,7 @@ public class barangmasuk extends javax.swing.JFrame {
                 String SQL = "insert into tblbrgmasuk values('"+txtnota.getText()+"',"+
                 "'"+txttglbrng.getText()+"',"+
                 "'"+IP+"',"+
+                "'"+PI+"',"+
                 "'"+txttotal.getText()+"')";
                 stt.executeUpdate(SQL);
                 
