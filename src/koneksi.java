@@ -37,7 +37,7 @@ public class koneksi {
                 koneksi = DriverManager.getConnection(url,user,password);
                 System.out.println("Berhasil Membuat Koneksi");
             }catch(SQLException t){
-                System.out.println("Error Membuat Konesi");
+                System.out.println("Error Membuat Koneksi");
             }
         }
         return  koneksi;
