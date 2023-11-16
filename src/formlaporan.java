@@ -169,7 +169,7 @@ public class formlaporan extends javax.swing.JFrame {
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, c);
             
             JasperViewer viewer = new JasperViewer(jasperPrint,false);
-            viewer.setTitle("LAPORAN PENJUALAN BARANG");
+            viewer.setTitle("LAPORAN BARANG");
             viewer.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             viewer.setVisible(true);
             
