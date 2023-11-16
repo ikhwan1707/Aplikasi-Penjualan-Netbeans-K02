@@ -17,7 +17,7 @@ import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
- * @author SMKI Utama3
+ * @author elsarsntna
  */
 public class formlaporan extends javax.swing.JFrame {
 

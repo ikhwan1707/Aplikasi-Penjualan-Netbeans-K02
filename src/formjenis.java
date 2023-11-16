@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author user
+ * @author elsarsntna
  */
 public class formjenis extends javax.swing.JFrame {
     

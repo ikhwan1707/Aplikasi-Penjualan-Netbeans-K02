@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author user
+ * @author elsarsntna
  */
 public class formbarang extends javax.swing.JFrame {
 

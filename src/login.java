@@ -8,7 +8,7 @@
     
 /**
  *
- * @author SMKI Utama3
+ * @author elsarsntna
  */
 public class login extends javax.swing.JFrame {
 
