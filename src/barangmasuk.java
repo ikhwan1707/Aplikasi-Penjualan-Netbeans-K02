@@ -17,7 +17,8 @@ import javax.swing.JOptionPane;
  * @author SKMI UTAMA6
  */
 public class barangmasuk extends javax.swing.JFrame {
-
+    private javax.swing.table.DefaultTableModel tabelmodel = new DefaultTableModel();
+    private DefaultTableModel model;
     /**
      * Creates new form barangmasuk
      */
@@ -30,6 +31,7 @@ public class barangmasuk extends javax.swing.JFrame {
         kosong();
         SetEditOn();
         SetEditOff();
+        loadData();
         
         // Mendapatkan tanggal saat ini
         Date date = new Date();
@@ -67,6 +69,9 @@ public class barangmasuk extends javax.swing.JFrame {
     public void kosong(){
         txtnamapetugas.setText("");
         combopetugas.setSelectedIndex(0);
+        combodistributor.setSelectedIndex(0);
+        txtnamadistributor.setText("");
+        txtkota.setText("");
         combokodebarang.setSelectedIndex(0);
         txtnamabarang.setText("");
         txthargajual.setText("");
@@ -75,16 +80,38 @@ public class barangmasuk extends javax.swing.JFrame {
         txtsubtotal.setText("");
     }
     
+    public void totalBiaya(){
+        int jumlahBaris = tabelbarangmasuk.getRowCount();
+        double totalBiaya = 0;
+        int jumlahBarang;
+        double hargaBarang;
+        for (int i = 0; i < jumlahBaris; i++) {
+            jumlahBarang = Integer.parseInt(tabelbarangmasuk.getValueAt(i, 4).toString());
+            hargaBarang = Double.parseDouble(tabelbarangmasuk.getValueAt(i, 2).toString());
+            totalBiaya = totalBiaya + (jumlahBarang * hargaBarang);
+        }
+        txttotal.setText(String.format("%.2f", totalBiaya));
+    }
+    
     public void SetEditOff(){
         txtnota.setEnabled(false); 
         txttglbrng.setEnabled(false);
         combodistributor.setEnabled(false);
-        combopetugas.setEnabled(false); 
-        combokodebarang.setEnabled(false); 
+        combopetugas.setEnabled(false);
+        txtnamapetugas.setEnabled(false);
+        txtnamadistributor.setEnabled(false);
+        txtkota.setEnabled(false);
+        combokodebarang.setEnabled(false);
+        txtnamabarang.setEnabled(false);
+        txthargajual.setEnabled(false);
+        txtstok.setEnabled(false);
         txtjumlah.setEnabled(false); 
+        txtsubtotal.setEnabled(false);
         btnhitung.setEnabled(false); 
         btncaridata.setEnabled(false); 
         btnitem.setEnabled(false);
+        btnsave.setEnabled(false);
+        btnclose.setEnabled(false);
         txttotal.setText("0");
     }
     
@@ -92,15 +119,69 @@ public class barangmasuk extends javax.swing.JFrame {
         txtnota.setEnabled(true); 
         txttglbrng.setEnabled(true); 
         combopetugas.setEnabled(true); 
+        txtnamapetugas.setEnabled(true);
+        combodistributor.setEnabled(true);
+        txtnamadistributor.setEnabled(true);
+        txtkota.setEnabled(true);
         combokodebarang.setEnabled(true); 
+        txtnamabarang.setEnabled(true);
+        txthargajual.setEnabled(true);
+        txtstok.setEnabled(true);
         txtjumlah.setEnabled(true); 
         btnsave.setEnabled(true); 
         btncaridata.setEnabled(true); 
-        btnhitung.setEnabled(true); 
+        btnhitung.setEnabled(true);
+        txtsubtotal.setEnabled(true);
         btnitem.setEnabled(true);
         btnsave.setEnabled(true);
+        btnclose.setEnabled(true);
         txttotal.setText("0");
     }
+    
+    private void loadData(){
+    //membuat model
+    model = new DefaultTableModel();
+    
+    //menghapus seluruh data
+    model.getDataVector().removeAllElements();
+    //memberi tau bahwa data telah kosong
+    model.fireTableDataChanged();
+    
+    tabelbarangmasuk.setModel(model);
+    model.addColumn("Kode Barang");
+    model.addColumn("Nama Barang");
+    model.addColumn("Harga Jual");
+    model.addColumn("Stok");
+    model.addColumn("Jumlah");
+    model.addColumn("Subtotal");
+    
+    try {
+        String sql = "SELECT tblbarang.KodeBarang,tblbarang.NamaBarang,tblbarang.HargaJual,tblbarang.Stok,tbldetailbrgmasuk.Jumlah,tbldetailbrgmasuk.Subtottal,tblbrgmasuk.NoNota FROM tblbarang,tbldetailbrgmasuk,tblbrgmasuk"
+                + "WHERE tblbarang.KodeBarang=tbldetailbrgmasuk.KodeBarang"
+                + "AND tblbrgmasuk.NoNota=tbldetailbrgmasuk.NoNota"
+                + "AND tbldetailbrgmasuk.NoNota='"+txtnota.getText()+"'";
+        
+        Connection c = koneksi.getKoneksi();
+        Statement s = c.createStatement();
+        ResultSet r = s.executeQuery(sql);
+        
+        while (r.next()){
+        //lakukan penelusuran baris
+            model.addRow(new Object[]{
+                r.getString(1),
+                r.getString(2),
+                r.getString(3),
+                r.getString(4),
+                r.getString(5),
+                r.getString(6)
+            });
+    }
+    tabelbarangmasuk.setModel(model);
+    }catch (SQLException e){
+        System.out.println("Terjadi Errors");
+    }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -232,6 +313,12 @@ public class barangmasuk extends javax.swing.JFrame {
             }
         });
 
+        txthargajual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txthargajualActionPerformed(evt);
+            }
+        });
+
         jLabel12.setText("Rp");
 
         jLabel13.setText("Stok");
@@ -285,14 +372,11 @@ public class barangmasuk extends javax.swing.JFrame {
                         .addGap(55, 55, 55)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtsubtotal)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtstok)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(txtjumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnhitung))))))
+                            .addComponent(txtstok)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtjumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnhitung))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -343,6 +427,11 @@ public class barangmasuk extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tabelbarangmasuk.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelbarangmasukMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabelbarangmasuk);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 520, 180));
@@ -486,6 +575,7 @@ public class barangmasuk extends javax.swing.JFrame {
             ResultSet rs = p.executeQuery();
             rs.absolute(1);
             txtnamadistributor.setText(rs.getString("NamaDistributor"));
+            txtkota.setText(rs.getString("KotaAsal"));
             } catch (SQLException ex) {
         }
     }//GEN-LAST:event_combodistributorItemStateChanged
@@ -556,11 +646,11 @@ public class barangmasuk extends javax.swing.JFrame {
                 data[3] = txtstok.getText();
                 data[4] = txtjumlah.getText();
                 data[5] = txtsubtotal.getText();
-//                tabelbarangmasuk.insertRow(0, data);
-//                
-//                totalBiaya();
-//                stt.close();
-//              kon.close();
+                tabelmodel.insertRow(0, data);
+                
+                totalBiaya();
+                stt.close();
+                kon.close();
                 combokodebarang.requestFocus();
                 btnitem.setEnabled(false);
                 btnsave.setEnabled(true);
@@ -619,6 +709,14 @@ public class barangmasuk extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnsaveActionPerformed
+
+    private void tabelbarangmasukMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelbarangmasukMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tabelbarangmasukMouseClicked
+
+    private void txthargajualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txthargajualActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txthargajualActionPerformed
 
     /**
      * @param args the command line arguments

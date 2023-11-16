@@ -252,16 +252,11 @@
                           <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="txtsubtotal" max="32767" attributes="0"/>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtstok" max="32767" attributes="0"/>
-                                      <Group type="102" attributes="0">
-                                          <Component id="txtjumlah" min="-2" pref="44" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="btnhitung" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                              <Component id="txtstok" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="txtjumlah" min="-2" pref="44" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="btnhitung" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -348,6 +343,9 @@
         <Component class="javax.swing.JTextField" name="txtnamabarang">
         </Component>
         <Component class="javax.swing.JTextField" name="txthargajual">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txthargajualActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel12">
           <Properties>
@@ -419,6 +417,9 @@
               </Table>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tabelbarangmasukMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
