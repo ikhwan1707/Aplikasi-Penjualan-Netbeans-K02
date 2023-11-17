@@ -499,6 +499,9 @@ public class penjualan extends javax.swing.JFrame {
         txtsisa.setText("0");
         txttotal.setText("0");
         btncaripetugas.setEnabled(false);
+        btnclose.setEnabled(false);
+        btncancel.setEnabled(false);
+        btnsave.setEnabled(false);
     }
     
     public void SetEditOn(){
@@ -515,6 +518,9 @@ public class penjualan extends javax.swing.JFrame {
         txtsisa.setText("0");
         txttotal.setText("0");
         btncaripetugas.setEnabled(true);
+        btnclose.setEnabled(true);
+        btncancel.setEnabled(true);
+        btnsave.setEnabled(true);
     }
     
     
