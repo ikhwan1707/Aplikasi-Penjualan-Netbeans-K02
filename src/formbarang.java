@@ -452,6 +452,7 @@ public class formbarang extends javax.swing.JFrame {
         txtnet.setEnabled(false);
         txtjual.setEnabled(false);
         txtstok.setEnabled(false);
+        txtstok.setEnabled(false);
         
     }
     public void SetEditOn(){
