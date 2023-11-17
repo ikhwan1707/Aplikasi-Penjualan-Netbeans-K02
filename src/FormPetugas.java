@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author user
+ * @author Nurlaila Ramadhani
  */
 public class FormPetugas extends javax.swing.JFrame {
 
@@ -136,7 +136,7 @@ public class FormPetugas extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Entri Data Petugas");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 23, 171, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(164, 23, 220, -1));
 
         jLabel2.setText("ID Petugas");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 76, 86, -1));

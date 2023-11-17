@@ -7,7 +7,13 @@
         <Menu class="javax.swing.JMenu" name="Menu1">
           <Properties>
             <Property name="text" type="java.lang.String" value="File"/>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[64, 22]"/>
+            </Property>
           </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
+          </AccessibilityProperties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="MenuJenisBarang">
               <Properties>
@@ -105,12 +111,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="469" max="32767" attributes="0"/>
+          <EmptySpace min="0" pref="678" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="453" max="32767" attributes="0"/>
+          <EmptySpace min="0" pref="406" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>

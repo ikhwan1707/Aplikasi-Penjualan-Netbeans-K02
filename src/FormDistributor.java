@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author user
+ * @author Nurlaila Ramadhani
  */
 public class FormDistributor extends javax.swing.JFrame {
 

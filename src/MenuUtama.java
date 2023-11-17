@@ -8,7 +8,7 @@
 
 /**
  *
- * @author user
+ * @author Nurlaila Ramadhani
  */
 public class MenuUtama extends javax.swing.JFrame {
 
