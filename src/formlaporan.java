@@ -45,7 +45,7 @@ public class formlaporan extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         txtfaktur = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        btncetak = new javax.swing.JButton();
+        btncetakfatur = new javax.swing.JButton();
         btnclose = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -60,8 +60,18 @@ public class formlaporan extends javax.swing.JFrame {
         });
 
         btnmasuk.setText("Cetak Report Barang Masuk");
+        btnmasuk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnmasukActionPerformed(evt);
+            }
+        });
 
-        btnpenjualan.setText("Cetak Report Penjualan");
+        btnpenjualan.setText("Cetak Report Penjualan Barang");
+        btnpenjualan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnpenjualanActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -70,9 +80,9 @@ public class formlaporan extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnpenjualan, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnbarang, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnmasuk, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnpenjualan, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnmasuk, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -82,16 +92,21 @@ public class formlaporan extends javax.swing.JFrame {
                 .addComponent(btnbarang)
                 .addGap(14, 14, 14)
                 .addComponent(btnmasuk)
-                .addGap(14, 14, 14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnpenjualan)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Report Per Nomor Faktur"));
 
         jLabel1.setText("No. Faktur");
 
-        btncetak.setText("Cetak");
+        btncetakfatur.setText("Cetak");
+        btncetakfatur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncetakfaturActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -103,8 +118,8 @@ public class formlaporan extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(txtfaktur, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btncetak)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addComponent(btncetakfatur)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,11 +128,16 @@ public class formlaporan extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtfaktur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btncetak))
+                    .addComponent(btncetakfatur))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
         btnclose.setText("Close");
+        btnclose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncloseActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -125,25 +145,25 @@ public class formlaporan extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnclose)
-                .addGap(68, 68, 68))
+                .addGap(15, 15, 15))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnclose)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addGap(12, 12, 12)
+                .addComponent(btnclose))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -154,7 +174,9 @@ public class formlaporan extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
@@ -182,6 +204,71 @@ public class formlaporan extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnbarangActionPerformed
 
+    private void btncetakfaturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncetakfaturActionPerformed
+        // TODO add your handling code here:
+        try{
+            String NoFaktur = txtfaktur.getText();
+            Connection c = koneksi.getKoneksi();
+            JasperReport jasperReport = JasperCompileManager.compileReport("src/laporan/laporan_nofaktur.jrxml");
+            Map<String, Object> parameters = new HashMap<>();
+            parameters.put("NoFaktur", NoFaktur);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, c);
+            
+            JasperViewer viewer = new JasperViewer(jasperPrint,false);
+            viewer.setTitle("LAPORAN PENJUALAN BERDASARKAN NO FAKTUR");
+            viewer.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            viewer.setVisible(true);
+            
+            //c.close();
+        } catch( JRException e){
+            JOptionPane.showMessageDialog(null, "Data tidak dapat dicetak!", "cetak data", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btncetakfaturActionPerformed
+
+    private void btnmasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmasukActionPerformed
+        // TODO add your handling code here:
+        try{
+            Connection c = koneksi.getKoneksi();
+            JasperReport jasperReport = JasperCompileManager.compileReport("src/laporan/laporan_barang.jrxml");
+            Map<String, Object> parameters = new HashMap<>();
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, c);
+            
+            JasperViewer viewer = new JasperViewer(jasperPrint,false);
+            viewer.setTitle("LAPORAN BARANG");
+            viewer.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            viewer.setVisible(true);
+            
+            //c.close();
+        } catch( JRException e){
+            JOptionPane.showMessageDialog(null, "Data tidak dapat dicetak!", "cetak data", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnmasukActionPerformed
+
+    private void btnpenjualanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpenjualanActionPerformed
+        // TODO add your handling code here:
+        try{
+            Connection c = koneksi.getKoneksi();
+            JasperReport jasperReport = JasperCompileManager.compileReport("src/laporan/laporan_penjualan.jrxml");
+            Map<String, Object> parameters = new HashMap<>();
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, c);
+            
+            JasperViewer viewer = new JasperViewer(jasperPrint,false);
+            viewer.setTitle("LAPORAN PENJUALAN BARANG");
+            viewer.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            viewer.setVisible(true);
+            
+            //c.close();
+        } catch( JRException e){
+            JOptionPane.showMessageDialog(null, "Data tidak dapat dicetak!", "cetak data", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnpenjualanActionPerformed
+
+    private void btncloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncloseActionPerformed
+        // TODO add your handling code here:
+        if(JOptionPane.showConfirmDialog(null,"Yakin mau ngeclose??","Information", JOptionPane.OK_CANCEL_OPTION,JOptionPane.INFORMATION_MESSAGE)==JOptionPane.OK_OPTION)
+        this.dispose();
+    }//GEN-LAST:event_btncloseActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -207,9 +294,7 @@ public class formlaporan extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(formlaporan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
-        /* Create and display the form */
+           /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new formlaporan().setVisible(true);
@@ -219,7 +304,7 @@ public class formlaporan extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnbarang;
-    private javax.swing.JButton btncetak;
+    private javax.swing.JButton btncetakfatur;
     private javax.swing.JButton btnclose;
     private javax.swing.JButton btnmasuk;
     private javax.swing.JButton btnpenjualan;
