@@ -32,6 +32,7 @@ public class barangmasuk extends javax.swing.JFrame {
         SetEditOn();
         SetEditOff();
         loadData();
+       // TampilGridDetail();
         
         // Mendapatkan tanggal saat ini
         Date date = new Date();
@@ -158,6 +159,48 @@ public class barangmasuk extends javax.swing.JFrame {
         btnclose.setEnabled(true);
     }
     
+    public void TampilGridDetail() {
+    //membuat model
+    tabelmodel = new DefaultTableModel();
+    
+    //menghapus seluruh data
+    tabelmodel.getDataVector().removeAllElements();
+    //memberi tau bahwa data telah kosong
+    tabelmodel.fireTableDataChanged();
+    
+    tabelbarangmasuk.setModel(tabelmodel);
+    tabelmodel.addColumn("Kode Barang");
+    tabelmodel.addColumn("Nama Barang");
+    tabelmodel.addColumn("Harga Jual");
+    tabelmodel.addColumn("Stok");
+    tabelmodel.addColumn("Jumlah");
+    tabelmodel.addColumn("Subtotal");
+    
+    try {
+        String sql = "SELECT tblbarang.KodeBarang,tblbarang.NamaBarang,tblbarang.HargaJual,tblbarang.Stok,tbldetailbrgmasuk.Jumlah,tbldetailbrgmasuk.Subtottal, tblbrgmasuk.NoNota FROM tblbarang,tbldetailbrgmasuk,tblbrgmasuk WHERE tblbarang.KodeBarang=tbldetailbrgmasuk.KodeBarang AND tblbrgmasuk.NoNota=tbldetailbrgmasuk.NoNota AND tbldetailbrgmasuk.NoNota='"+txtnota.getText()+"'";
+        
+        Connection c = koneksi.getKoneksi(); 
+            Statement s = c.createStatement();       
+            ResultSet res = s.executeQuery(sql);  
+
+            while(res.next()){
+                String data[] = new String[6];
+            // lakukan penelusuran baris 
+                data[0] = res.getString(1);
+                data[1] = res.getString(2);
+                data[2] = res.getString(3);
+                data[3] = res.getString(4);
+                data[4] = res.getString(5);
+                data[5] = res.getString(6);
+                tabelmodel.addRow(data);
+            }
+    tabelbarangmasuk.setModel(tabelmodel);
+    
+    }catch(SQLException e){ 
+            System.out.println("Terjadi Error");
+        }
+    }
+    
     private void loadData(){
     //membuat model
     tabelmodel = new DefaultTableModel();
@@ -178,26 +221,29 @@ public class barangmasuk extends javax.swing.JFrame {
     try {
         String sql = "SELECT tblbarang.KodeBarang,tblbarang.NamaBarang,tblbarang.HargaJual,tblbarang.Stok,tbldetailbrgmasuk.Jumlah,tbldetailbrgmasuk.Subtottal, tblbrgmasuk.NoNota FROM tblbarang,tbldetailbrgmasuk,tblbrgmasuk WHERE tblbarang.KodeBarang=tbldetailbrgmasuk.KodeBarang AND tblbrgmasuk.NoNota=tbldetailbrgmasuk.NoNota AND tbldetailbrgmasuk.NoNota='"+txtnota.getText()+"'";
         
-        Connection c = koneksi.getKoneksi();
-        Statement s = c.createStatement();
-        ResultSet r = s.executeQuery(sql);
-        
-        while (r.next()){
-        //lakukan penelusuran baris
-            tabelmodel.addRow(new Object[]{
-                r.getString(1),
-                r.getString(2),
-                r.getString(3),
-                r.getString(4),
-                r.getString(5),
-                r.getString(6)
-            });
-    }
+        Connection c = koneksi.getKoneksi(); 
+            Statement s = c.createStatement();       
+            ResultSet res = s.executeQuery(sql);  
+
+            while(res.next()){
+                String data[] = new String[6];
+            // lakukan penelusuran baris 
+                data[0] = res.getString(1);
+                data[1] = res.getString(2);
+                data[2] = res.getString(3);
+                data[3] = res.getString(4);
+                data[4] = res.getString(5);
+                data[5] = res.getString(6);
+                tabelmodel.addRow(data);
+            }
     tabelbarangmasuk.setModel(tabelmodel);
-    }catch (SQLException e){
-        System.out.println("Terjadi Errors");
+    
+    }catch(SQLException e){ 
+            System.out.println("Terjadi Error");
+        }
     }
-    }
+    
+    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -296,7 +342,14 @@ public class barangmasuk extends javax.swing.JFrame {
                 combopetugasItemStateChanged(evt);
             }
         });
+        combopetugas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combopetugasActionPerformed(evt);
+            }
+        });
         getContentPane().add(combopetugas, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 97, 221, -1));
+
+        txtnamapetugas.setEnabled(false);
         getContentPane().add(txtnamapetugas, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 125, 399, -1));
 
         combodistributor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Distributor" }));
@@ -306,7 +359,11 @@ public class barangmasuk extends javax.swing.JFrame {
             }
         });
         getContentPane().add(combodistributor, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 153, 221, -1));
+
+        txtnamadistributor.setEnabled(false);
         getContentPane().add(txtnamadistributor, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 181, 399, -1));
+
+        txtkota.setEnabled(false);
         getContentPane().add(txtkota, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 209, 399, -1));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Detail Barang Masuk"));
@@ -330,6 +387,9 @@ public class barangmasuk extends javax.swing.JFrame {
             }
         });
 
+        txtnamabarang.setEnabled(false);
+
+        txthargajual.setEnabled(false);
         txthargajual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txthargajualActionPerformed(evt);
@@ -351,6 +411,10 @@ public class barangmasuk extends javax.swing.JFrame {
             }
         });
 
+        txtstok.setEnabled(false);
+
+        txtjumlah.setEnabled(false);
+
         btnhitung.setText("Hitung");
         btnhitung.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -359,6 +423,7 @@ public class barangmasuk extends javax.swing.JFrame {
         });
 
         txtsubtotal.setText("0");
+        txtsubtotal.setEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -480,6 +545,7 @@ public class barangmasuk extends javax.swing.JFrame {
         jLabel16.setText("Total  Rp");
         getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 600, -1, -1));
 
+        txttotal.setEnabled(false);
         txttotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txttotalActionPerformed(evt);
@@ -539,9 +605,10 @@ public class barangmasuk extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             Connection c = koneksi.getKoneksi();
+            Statement stt = c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
             String sql = "SELECT * FROM tblbarang where KodeBarang='"+ combokodebarang.getSelectedItem().toString()+"'";
-            PreparedStatement p = c.prepareStatement(sql);
-            ResultSet rs = p.executeQuery();
+           
+            ResultSet rs = stt.executeQuery(sql);
             rs.absolute(1);
             txtnamabarang.setText(rs.getString("namabarang"));
             txthargajual.setText(rs.getString("hargajual"));
@@ -552,11 +619,12 @@ public class barangmasuk extends javax.swing.JFrame {
 
     private void combopetugasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_combopetugasItemStateChanged
         // TODO add your handling code here:
-        try {
+       try {
             Connection c = koneksi.getKoneksi();
-            String sql = "SELECT * FROM tblpetugas where idpetugas='"+ combopetugas.getSelectedItem().toString()+"'";
-            PreparedStatement p = c.prepareStatement(sql);
-            ResultSet rs = p.executeQuery();
+            String sql = "SELECT * FROM tblpetugas where IDPetugas='"+ combopetugas.getSelectedItem().toString()+"'";
+            //PreparedStatement p = c.prepareStatement(sql);
+            Statement stt = c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            ResultSet rs = stt.executeQuery(sql);
             rs.absolute(1);
             txtnamapetugas.setText(rs.getString("namapetugas"));
             } catch (SQLException ex) {
@@ -587,8 +655,9 @@ public class barangmasuk extends javax.swing.JFrame {
         try {
             Connection c = koneksi.getKoneksi();
             String sql = "SELECT * FROM tbldistributor where IDDistributor='"+ combodistributor.getSelectedItem().toString()+"'";
-            PreparedStatement p = c.prepareStatement(sql);
-            ResultSet rs = p.executeQuery();
+            //PreparedStatement p = c.prepareStatement(sql);
+            Statement stt = c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            ResultSet rs = stt.executeQuery(sql);
             rs.absolute(1);
             txtnamadistributor.setText(rs.getString("NamaDistributor"));
             txtkota.setText(rs.getString("KotaAsal"));
@@ -606,11 +675,11 @@ public class barangmasuk extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             Connection con = koneksi.getKoneksi();
-            Statement stt = con.createStatement();
+            Statement stt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
             String SQL = "SELECT * FROM tblbrgmasuk where NoNota='"+txtnota.getText().toString()+"'";
             ResultSet res = stt.executeQuery(SQL);
             res.absolute(1);
-            //TampilGridDetail();
+            TampilGridDetail();
             txttglbrng.setText(res.getString("TglMasuk"));
             combopetugas.setSelectedItem(res.getString("IDPetugas"));
             combodistributor.setSelectedItem(res.getString("IDDistributor"));
@@ -664,7 +733,7 @@ public class barangmasuk extends javax.swing.JFrame {
                 stt.close();
                 //kon.close();
                 combokodebarang.requestFocus();
-                btnitem.setEnabled(false);
+               // btnitem.setEnabled(false);
                 btnsave.setEnabled(true);
                 BersihDetail();
                 combokodebarang.requestFocus();
@@ -729,6 +798,10 @@ public class barangmasuk extends javax.swing.JFrame {
     private void txthargajualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txthargajualActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txthargajualActionPerformed
+
+    private void combopetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combopetugasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_combopetugasActionPerformed
 
     /**
      * @param args the command line arguments
