@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="634bf39e-9464-4f4b-86d0-1e3e6835ab48">
 	<property name="ireport.zoom" value="1.4641000000000015"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="8"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="NoFaktur" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT tblpetugas.IDPetugas, tblpetugas.NamaPetugas, tblbarang.KodeBarang,tblbarang.NamaBarang,tblbarang.HargaJual,tblbarang.Stok,tbldetailpenjualan.Jumlah, tbldetailpenjualan.SubTotal,tblpenjualan.NoFaktur, tblpenjualan.Bayar, tblpenjualan.Sisa, tblpenjualan.Total, tblpenjualan.TglPenjualan
@@ -61,7 +61,7 @@ AND tbldetailpenjualan.NoFaktur = $P{NoFaktur};]]>
 				<textElement>
 					<font fontName="Times New Roman" size="24" isBold="true" isItalic="false"/>
 				</textElement>
-				<text><![CDATA[Laoran Penjualan Berdasarkan No faktur]]></text>
+				<text><![CDATA[Laporan Penjualan Berdasarkan No faktur]]></text>
 			</staticText>
 		</band>
 	</title>
