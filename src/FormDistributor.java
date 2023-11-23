@@ -107,6 +107,23 @@ public class FormDistributor extends javax.swing.JFrame {
         txttelepon.setText(null);
     }
     
+    public void SetEditOff(){
+        txtid.setEnabled(false);
+        txtnama.setEnabled(false);
+        txaalamat.setEnabled(false);
+        txtkota.setEnabled(false);
+        txttelepon.setEnabled(false);
+        txtemail.setEnabled(false);
+    }
+    
+    public void SetEditOn(){
+        txtid.setEnabled(true);
+        txtnama.setEnabled(true);
+        txaalamat.setEnabled(true);
+        txtkota.setEnabled(true);
+        txttelepon.setEnabled(true);
+        txtemail.setEnabled(true);
+    }
     
 
     /**
@@ -118,7 +135,6 @@ public class FormDistributor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -141,30 +157,45 @@ public class FormDistributor extends javax.swing.JFrame {
         btndelete = new javax.swing.JButton();
         btncancel = new javax.swing.JButton();
         btnclose = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText(" Entri Data Distributor Barang");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setText("ID Distributor");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 88, 123, -1));
 
         jLabel3.setText("Nama Distributor");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 129, 123, -1));
 
         jLabel4.setText("Alamat Distributor");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 189, -1, -1));
 
         jLabel5.setText("Kota Asal");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 291, 123, -1));
 
         jLabel6.setText("E-mail");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 336, 123, -1));
 
         jLabel7.setText("Telepon");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 373, 123, -1));
 
         jLabel8.setText("Maksimal 15 Digit");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 377, 150, -1));
+        getContentPane().add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 84, 160, -1));
+        getContentPane().add(txtnama, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 125, 341, -1));
 
         txaalamat.setColumns(20);
         txaalamat.setRows(5);
         jScrollPane1.setViewportView(txaalamat);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 166, 341, -1));
+        getContentPane().add(txtkota, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 291, 341, -1));
+        getContentPane().add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 332, 341, -1));
+        getContentPane().add(txttelepon, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 373, 160, -1));
+
+        tabeldistributor.setBackground(new java.awt.Color(182, 204, 216));
         tabeldistributor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -183,143 +214,92 @@ public class FormDistributor extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tabeldistributor);
 
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 420, 467, 186));
+
+        btnadd.setBackground(new java.awt.Color(0, 102, 140));
+        btnadd.setForeground(new java.awt.Color(255, 255, 255));
         btnadd.setText("Add New");
         btnadd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnaddActionPerformed(evt);
             }
         });
+        getContentPane().add(btnadd, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 620, -1, -1));
 
+        btnsave.setBackground(new java.awt.Color(0, 102, 140));
+        btnsave.setForeground(new java.awt.Color(255, 255, 255));
         btnsave.setText("Save");
         btnsave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnsaveActionPerformed(evt);
             }
         });
+        getContentPane().add(btnsave, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 620, -1, -1));
 
+        btnupdate.setBackground(new java.awt.Color(0, 102, 140));
+        btnupdate.setForeground(new java.awt.Color(255, 255, 255));
         btnupdate.setText("Update");
         btnupdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnupdateActionPerformed(evt);
             }
         });
+        getContentPane().add(btnupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 620, -1, -1));
 
+        btndelete.setBackground(new java.awt.Color(204, 0, 0));
+        btndelete.setForeground(new java.awt.Color(255, 255, 255));
         btndelete.setText("Delete");
         btndelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btndeleteActionPerformed(evt);
             }
         });
+        getContentPane().add(btndelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 620, -1, -1));
 
+        btncancel.setBackground(new java.awt.Color(204, 0, 0));
+        btncancel.setForeground(new java.awt.Color(255, 255, 255));
         btncancel.setText("Cancel");
         btncancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btncancelActionPerformed(evt);
             }
         });
+        getContentPane().add(btncancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 620, -1, -1));
 
+        btnclose.setBackground(new java.awt.Color(204, 0, 0));
+        btnclose.setForeground(new java.awt.Color(255, 255, 255));
         btnclose.setText("Close");
         btnclose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btncloseActionPerformed(evt);
             }
         });
+        getContentPane().add(btnclose, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 620, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnadd)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnsave)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnupdate)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btndelete)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btncancel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnclose)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1)
-                            .addComponent(txtnama)
-                            .addComponent(txtemail)
-                            .addComponent(txtkota, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txttelepon, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(114, 114, 114))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+        jPanel1.setBackground(new java.awt.Color(212, 234, 247));
+
+        jLabel1.setBackground(new java.awt.Color(212, 234, 247));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setText(" Entri Data Distributor Barang");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(210, 210, 210)
                 .addComponent(jLabel1)
-                .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtnama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabel4)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtkota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6)))
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txttelepon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel8)))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnadd)
-                    .addComponent(btnsave)
-                    .addComponent(btnupdate)
-                    .addComponent(btndelete)
-                    .addComponent(btncancel)
-                    .addComponent(btnclose))
-                .addGap(25, 25, 25))
+                .addContainerGap(277, Short.MAX_VALUE))
         );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(49, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(16, 16, 16))
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, 740, 90));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -365,6 +345,8 @@ public class FormDistributor extends javax.swing.JFrame {
         }finally{
             loaddata();
             kosong();
+            btnsave.setEnabled(false);
+            SetEditOff();
         }
     }//GEN-LAST:event_btnupdateActionPerformed
 
@@ -396,13 +378,17 @@ public class FormDistributor extends javax.swing.JFrame {
         }finally {
             loaddata();
             kosong();
+            SetEditOff();
         }
     }//GEN-LAST:event_btndeleteActionPerformed
 
     private void btnaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddActionPerformed
         // TODO add your handling code here:
-        setEnabletrue();
-        btnadd.setEnabled(true);
+        kosong();
+        btnsave.setEnabled(true);
+        btnupdate.setEnabled(false);
+        btndelete.setEnabled(false);
+        SetEditOn();
     }//GEN-LAST:event_btnaddActionPerformed
 
     private void btncancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelActionPerformed
@@ -431,6 +417,11 @@ public class FormDistributor extends javax.swing.JFrame {
         txtemail.setText(email);
         String telpon = tabeldistributor.getValueAt(baris, 5).toString();
         txttelepon.setText(telpon);
+        btnsave.setEnabled(false);
+        btnupdate.setEnabled(true);
+        btndelete.setEnabled(true);
+        btncancel.setEnabled(true);
+        SetEditOn();
     }//GEN-LAST:event_tabeldistributorMouseClicked
 
     private void btnsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsaveActionPerformed
@@ -471,8 +462,7 @@ public class FormDistributor extends javax.swing.JFrame {
             }finally{
                 loaddata();
                 kosong();
-               setEnabletrue();
-               btnadd.setEnabled(true);
+               SetEditOff();
             }
         }
     }//GEN-LAST:event_btnsaveActionPerformed
@@ -532,6 +522,7 @@ public class FormDistributor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tabeldistributor;
