@@ -55,7 +55,7 @@ AND
 	<columnHeader>
 		<band height="31" splitType="Stretch">
 			<rectangle>
-				<reportElement x="0" y="0" width="555" height="20" backcolor="#009999" uuid="6cc999a8-3b6e-43a1-8535-f7064dfe3eb6"/>
+				<reportElement x="0" y="0" width="555" height="20" backcolor="#B6CCD8" uuid="6cc999a8-3b6e-43a1-8535-f7064dfe3eb6"/>
 			</rectangle>
 			<staticText>
 				<reportElement x="356" y="1" width="53" height="20" uuid="01031b10-2583-480a-b116-fcba17521457"/>

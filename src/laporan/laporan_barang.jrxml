@@ -63,7 +63,7 @@
 	<columnHeader>
 		<band height="22" splitType="Stretch">
 			<rectangle>
-				<reportElement x="0" y="0" width="555" height="20" backcolor="#CCCCCC" uuid="f9a935c9-8357-4f81-af17-eefbefcf6105"/>
+				<reportElement x="0" y="0" width="555" height="20" backcolor="#B6CCD8" uuid="f9a935c9-8357-4f81-af17-eefbefcf6105"/>
 			</rectangle>
 			<staticText>
 				<reportElement x="26" y="0" width="88" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="c7c90c26-0940-4a08-9c03-d304da17dfb0"/>
