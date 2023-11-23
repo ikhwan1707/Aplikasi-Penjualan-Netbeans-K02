@@ -162,7 +162,7 @@ public class formjenis extends javax.swing.JFrame {
             }
         });
 
-        btncancel.setBackground(new java.awt.Color(0, 102, 140));
+        btncancel.setBackground(new java.awt.Color(204, 0, 0));
         btncancel.setForeground(new java.awt.Color(255, 255, 255));
         btncancel.setText("Cancel");
         btncancel.addActionListener(new java.awt.event.ActionListener() {
@@ -273,6 +273,8 @@ public class formjenis extends javax.swing.JFrame {
         tabeljenis.setModel(model);
         model.addColumn("Kode Jenis");
         model.addColumn("Jenis Barang");
+        
+        
         
         
         try{
@@ -414,7 +416,8 @@ public class formjenis extends javax.swing.JFrame {
     }//GEN-LAST:event_btncloseActionPerformed
 
     private void tabeljenisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabeljenisMouseClicked
-       int baris = tabeljenis.getSelectedRow();
+        // TODO add your handling code here:
+        int baris = tabeljenis.getSelectedRow();
         
         if (baris == -1){
             // tak ada baris terseleksi
@@ -423,10 +426,6 @@ public class formjenis extends javax.swing.JFrame {
         
         kd_jenis.setText(model.getValueAt(baris, 0).toString());
         txtjenis.setText(model.getValueAt(baris, 1).toString());
-//        String kode_jenis = tabeljenis.getValueAt(baris, 0).toString();
-//        kd_jenis.setText(kode_jenis);
-//        String jenis = tabeljenis.getValueAt(baris, 1).toString();
-//        txtjenis.setText(jenis);
         btnsave.setEnabled(false);
         btnupdate.setEnabled(true);
         btndelete.setEnabled(true);

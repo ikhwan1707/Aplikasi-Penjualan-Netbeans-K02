@@ -211,7 +211,7 @@ public class formbarang extends javax.swing.JFrame {
             }
         });
 
-        btndelete.setBackground(new java.awt.Color(0, 102, 140));
+        btndelete.setBackground(new java.awt.Color(204, 0, 0));
         btndelete.setForeground(new java.awt.Color(255, 255, 255));
         btndelete.setText("Delete");
         btndelete.addActionListener(new java.awt.event.ActionListener() {
@@ -220,7 +220,7 @@ public class formbarang extends javax.swing.JFrame {
             }
         });
 
-        btncancel.setBackground(new java.awt.Color(0, 102, 140));
+        btncancel.setBackground(new java.awt.Color(204, 0, 0));
         btncancel.setForeground(new java.awt.Color(255, 255, 255));
         btncancel.setText("Cancel");
         btncancel.addActionListener(new java.awt.event.ActionListener() {
@@ -229,7 +229,7 @@ public class formbarang extends javax.swing.JFrame {
             }
         });
 
-        btnclose.setBackground(new java.awt.Color(0, 102, 140));
+        btnclose.setBackground(new java.awt.Color(204, 0, 0));
         btnclose.setForeground(new java.awt.Color(255, 255, 255));
         btnclose.setText("Close");
         btnclose.addActionListener(new java.awt.event.ActionListener() {
@@ -362,7 +362,9 @@ public class formbarang extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
