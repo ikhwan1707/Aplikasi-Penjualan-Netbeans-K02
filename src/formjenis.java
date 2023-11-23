@@ -118,7 +118,6 @@ public class formjenis extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tabeljenis.setEnabled(false);
         tabeljenis.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabeljenisMouseClicked(evt);
@@ -153,7 +152,7 @@ public class formjenis extends javax.swing.JFrame {
             }
         });
 
-        btndelete.setBackground(new java.awt.Color(204, 0, 0));
+        btndelete.setBackground(new java.awt.Color(0, 102, 140));
         btndelete.setForeground(new java.awt.Color(255, 255, 255));
         btndelete.setText("Delete");
         btndelete.addActionListener(new java.awt.event.ActionListener() {
@@ -162,7 +161,7 @@ public class formjenis extends javax.swing.JFrame {
             }
         });
 
-        btncancel.setBackground(new java.awt.Color(204, 0, 0));
+        btncancel.setBackground(new java.awt.Color(0, 102, 140));
         btncancel.setForeground(new java.awt.Color(255, 255, 255));
         btncancel.setText("Cancel");
         btncancel.addActionListener(new java.awt.event.ActionListener() {
@@ -171,7 +170,7 @@ public class formjenis extends javax.swing.JFrame {
             }
         });
 
-        btnclose.setBackground(new java.awt.Color(204, 0, 0));
+        btnclose.setBackground(new java.awt.Color(0, 102, 140));
         btnclose.setForeground(new java.awt.Color(255, 255, 255));
         btnclose.setText("Close");
         btnclose.addActionListener(new java.awt.event.ActionListener() {
