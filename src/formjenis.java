@@ -118,6 +118,7 @@ public class formjenis extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tabeljenis.setEnabled(false);
         tabeljenis.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabeljenisMouseClicked(evt);
@@ -152,7 +153,7 @@ public class formjenis extends javax.swing.JFrame {
             }
         });
 
-        btndelete.setBackground(new java.awt.Color(0, 102, 140));
+        btndelete.setBackground(new java.awt.Color(204, 0, 0));
         btndelete.setForeground(new java.awt.Color(255, 255, 255));
         btndelete.setText("Delete");
         btndelete.addActionListener(new java.awt.event.ActionListener() {
@@ -170,7 +171,7 @@ public class formjenis extends javax.swing.JFrame {
             }
         });
 
-        btnclose.setBackground(new java.awt.Color(0, 102, 140));
+        btnclose.setBackground(new java.awt.Color(204, 0, 0));
         btnclose.setForeground(new java.awt.Color(255, 255, 255));
         btnclose.setText("Close");
         btnclose.addActionListener(new java.awt.event.ActionListener() {
@@ -272,8 +273,6 @@ public class formjenis extends javax.swing.JFrame {
         tabeljenis.setModel(model);
         model.addColumn("Kode Jenis");
         model.addColumn("Jenis Barang");
-        
-        
         
         
         try{
@@ -415,8 +414,7 @@ public class formjenis extends javax.swing.JFrame {
     }//GEN-LAST:event_btncloseActionPerformed
 
     private void tabeljenisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabeljenisMouseClicked
-        // TODO add your handling code here:
-        int baris = tabeljenis.getSelectedRow();
+       int baris = tabeljenis.getSelectedRow();
         
         if (baris == -1){
             // tak ada baris terseleksi
@@ -425,6 +423,10 @@ public class formjenis extends javax.swing.JFrame {
         
         kd_jenis.setText(model.getValueAt(baris, 0).toString());
         txtjenis.setText(model.getValueAt(baris, 1).toString());
+//        String kode_jenis = tabeljenis.getValueAt(baris, 0).toString();
+//        kd_jenis.setText(kode_jenis);
+//        String jenis = tabeljenis.getValueAt(baris, 1).toString();
+//        txtjenis.setText(jenis);
         btnsave.setEnabled(false);
         btnupdate.setEnabled(true);
         btndelete.setEnabled(true);
