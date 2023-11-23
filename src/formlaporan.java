@@ -52,6 +52,8 @@ public class formlaporan extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Cek Laporan Keseluruhan"));
 
+        btnbarang.setBackground(new java.awt.Color(0, 102, 140));
+        btnbarang.setForeground(new java.awt.Color(255, 255, 255));
         btnbarang.setText("Cetak Report Barang");
         btnbarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,6 +61,8 @@ public class formlaporan extends javax.swing.JFrame {
             }
         });
 
+        btnmasuk.setBackground(new java.awt.Color(0, 102, 140));
+        btnmasuk.setForeground(new java.awt.Color(255, 255, 255));
         btnmasuk.setText("Cetak Report Barang Masuk");
         btnmasuk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,6 +70,8 @@ public class formlaporan extends javax.swing.JFrame {
             }
         });
 
+        btnpenjualan.setBackground(new java.awt.Color(0, 102, 140));
+        btnpenjualan.setForeground(new java.awt.Color(255, 255, 255));
         btnpenjualan.setText("Cetak Report Penjualan Barang");
         btnpenjualan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,7 +107,9 @@ public class formlaporan extends javax.swing.JFrame {
 
         jLabel1.setText("No. Faktur");
 
-        btncetakfatur.setText("Cetak");
+        btncetakfatur.setBackground(new java.awt.Color(0, 102, 140));
+        btncetakfatur.setForeground(new java.awt.Color(255, 255, 255));
+        btncetakfatur.setText("Print");
         btncetakfatur.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btncetakfaturActionPerformed(evt);
@@ -132,6 +140,8 @@ public class formlaporan extends javax.swing.JFrame {
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
+        btnclose.setBackground(new java.awt.Color(204, 0, 0));
+        btnclose.setForeground(new java.awt.Color(255, 255, 255));
         btnclose.setText("Close");
         btnclose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

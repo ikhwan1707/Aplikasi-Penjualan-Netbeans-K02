@@ -154,7 +154,6 @@ public class penjualan extends javax.swing.JFrame {
 
         jScrollPane3 = new javax.swing.JScrollPane();
         jPanel8 = new javax.swing.JPanel();
-        jLabel45 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -193,15 +192,15 @@ public class penjualan extends javax.swing.JFrame {
         btncaridata = new javax.swing.JButton();
         txtidpetugas = new javax.swing.JTextField();
         btncaripetugas = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel45 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jScrollPane3.setForeground(new java.awt.Color(255, 255, 255));
 
-        jLabel45.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel45.setText("Entri Data Penjualan Barang");
-        jPanel8.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, -1));
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setText("No. Faktur");
         jPanel8.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
@@ -259,6 +258,8 @@ public class penjualan extends javax.swing.JFrame {
         txtstok.setEnabled(false);
         jPanel9.add(txtstok, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 120, -1));
 
+        btnadditem.setBackground(new java.awt.Color(0, 102, 140));
+        btnadditem.setForeground(new java.awt.Color(255, 255, 255));
         btnadditem.setText("Add Item");
         btnadditem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -277,7 +278,9 @@ public class penjualan extends javax.swing.JFrame {
         jPanel9.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 130, -1, -1));
         jPanel9.add(txtjumlah, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 70, -1));
 
-        btnhitung.setText("Hitung");
+        btnhitung.setBackground(new java.awt.Color(0, 102, 140));
+        btnhitung.setForeground(new java.awt.Color(255, 255, 255));
+        btnhitung.setText("Count");
         btnhitung.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnhitungActionPerformed(evt);
@@ -293,6 +296,7 @@ public class penjualan extends javax.swing.JFrame {
 
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder("Grid Data Barang"));
 
+        tbhasil.setBackground(new java.awt.Color(182, 204, 216));
         tbhasil.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -312,7 +316,7 @@ public class penjualan extends javax.swing.JFrame {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 718, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 716, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
@@ -325,6 +329,8 @@ public class penjualan extends javax.swing.JFrame {
 
         jPanel8.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 740, 180));
 
+        btnclose.setBackground(new java.awt.Color(204, 0, 0));
+        btnclose.setForeground(new java.awt.Color(255, 255, 255));
         btnclose.setText("Close");
         btnclose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -333,6 +339,8 @@ public class penjualan extends javax.swing.JFrame {
         });
         jPanel8.add(btnclose, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 620, -1, -1));
 
+        btnaddnew.setBackground(new java.awt.Color(0, 102, 140));
+        btnaddnew.setForeground(new java.awt.Color(255, 255, 255));
         btnaddnew.setText("Add New");
         btnaddnew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -341,6 +349,8 @@ public class penjualan extends javax.swing.JFrame {
         });
         jPanel8.add(btnaddnew, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 620, -1, -1));
 
+        btnsave.setBackground(new java.awt.Color(0, 102, 140));
+        btnsave.setForeground(new java.awt.Color(255, 255, 255));
         btnsave.setText("Save Transaction");
         btnsave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -349,6 +359,8 @@ public class penjualan extends javax.swing.JFrame {
         });
         jPanel8.add(btnsave, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 620, 130, -1));
 
+        btncancel.setBackground(new java.awt.Color(204, 0, 0));
+        btncancel.setForeground(new java.awt.Color(255, 255, 255));
         btncancel.setText("Cancel");
         btncancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -389,7 +401,9 @@ public class penjualan extends javax.swing.JFrame {
         });
         jPanel8.add(txtsisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 660, 220, -1));
 
-        btncaridata.setText("Cari");
+        btncaridata.setBackground(new java.awt.Color(0, 102, 140));
+        btncaridata.setForeground(new java.awt.Color(255, 255, 255));
+        btncaridata.setText("Search");
         btncaridata.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btncaridataActionPerformed(evt);
@@ -398,7 +412,9 @@ public class penjualan extends javax.swing.JFrame {
         jPanel8.add(btncaridata, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, -1, -1));
         jPanel8.add(txtidpetugas, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 140, -1));
 
-        btncaripetugas.setText("Cari Petugas");
+        btncaripetugas.setBackground(new java.awt.Color(0, 102, 140));
+        btncaripetugas.setForeground(new java.awt.Color(255, 255, 255));
+        btncaripetugas.setText("Find an Officer");
         btncaripetugas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btncaripetugasActionPerformed(evt);
@@ -406,9 +422,33 @@ public class penjualan extends javax.swing.JFrame {
         });
         jPanel8.add(btncaripetugas, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 150, -1));
 
+        jPanel1.setBackground(new java.awt.Color(212, 234, 247));
+
+        jLabel45.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel45.setText("Entri Data Penjualan Barang");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(224, 224, 224)
+                .addComponent(jLabel45)
+                .addContainerGap(244, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel45)
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+
+        jPanel8.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 60));
+
         jScrollPane3.setViewportView(jPanel8);
 
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 790, 420));
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 790, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -769,6 +809,7 @@ public class penjualan extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;

@@ -99,22 +99,20 @@ private DefaultTableModel model;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtcari = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbhasil = new javax.swing.JTable();
         txtbatal = new javax.swing.JButton();
         txtpilih = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("List Petugas");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 15, -1, -1));
-
         jLabel2.setText("Cari :");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 50, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
 
         txtcari.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,8 +124,9 @@ private DefaultTableModel model;
                 txtcariKeyTyped(evt);
             }
         });
-        getContentPane().add(txtcari, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 47, 312, -1));
+        getContentPane().add(txtcari, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 312, -1));
 
+        tbhasil.setBackground(new java.awt.Color(182, 204, 216));
         tbhasil.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -141,23 +140,33 @@ private DefaultTableModel model;
         ));
         jScrollPane1.setViewportView(tbhasil);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 370, 170));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 370, 170));
 
+        txtbatal.setBackground(new java.awt.Color(204, 0, 0));
         txtbatal.setText("Batal");
         txtbatal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtbatalActionPerformed(evt);
             }
         });
-        getContentPane().add(txtbatal, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, -1, -1));
+        getContentPane().add(txtbatal, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 310, -1, -1));
 
+        txtpilih.setBackground(new java.awt.Color(0, 102, 140));
         txtpilih.setText("Pilih");
         txtpilih.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtpilihActionPerformed(evt);
             }
         });
-        getContentPane().add(txtpilih, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, -1, -1));
+        getContentPane().add(txtpilih, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, -1, -1));
+
+        jPanel1.setBackground(new java.awt.Color(212, 234, 247));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setText("List Petugas");
+        jPanel1.add(jLabel1);
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 70));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -227,6 +236,7 @@ private DefaultTableModel model;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbhasil;
     private javax.swing.JButton txtbatal;

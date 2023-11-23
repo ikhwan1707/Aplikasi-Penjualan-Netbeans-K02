@@ -47,7 +47,11 @@ public class MenuUtama extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jMenuBar1.setBackground(new java.awt.Color(212, 234, 247));
+
+        Menu1.setBackground(new java.awt.Color(212, 234, 247));
         Menu1.setText("File");
+        Menu1.setPreferredSize(new java.awt.Dimension(64, 22));
 
         MenuJenisBarang.setText("Data Jenis Barang");
         MenuJenisBarang.addActionListener(new java.awt.event.ActionListener() {
@@ -90,7 +94,9 @@ public class MenuUtama extends javax.swing.JFrame {
         Menu1.add(MenuExit);
 
         jMenuBar1.add(Menu1);
+        Menu1.getAccessibleContext().setAccessibleDescription("");
 
+        jMenu2.setBackground(new java.awt.Color(212, 234, 247));
         jMenu2.setText("Transaksi");
 
         MenuBarangMasukT.setText("Data Barang Masuk");
@@ -111,6 +117,7 @@ public class MenuUtama extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
+        jMenu1.setBackground(new java.awt.Color(212, 234, 247));
         jMenu1.setText("Report");
         jMenuBar1.add(jMenu1);
 
@@ -120,11 +127,11 @@ public class MenuUtama extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 469, Short.MAX_VALUE)
+            .addGap(0, 678, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 453, Short.MAX_VALUE)
+            .addGap(0, 406, Short.MAX_VALUE)
         );
 
         pack();
