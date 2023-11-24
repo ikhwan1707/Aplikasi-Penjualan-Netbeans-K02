@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dfb4097c-1815-42ed-84ac-33f65e6f4266">
-	<property name="ireport.zoom" value="1.6105100000000023"/>
+	<property name="ireport.zoom" value="1.6105100000000043"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="table">
@@ -47,14 +47,32 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="63" splitType="Stretch">
+		<band height="90" splitType="Stretch">
 			<staticText>
-				<reportElement x="177" y="40" width="226" height="23" uuid="3eec50d3-7f81-435f-b98f-9ac568290689"/>
+				<reportElement x="193" y="24" width="226" height="23" uuid="3eec50d3-7f81-435f-b98f-9ac568290689"/>
 				<textElement>
 					<font fontName="Times New Roman" size="16" isBold="true"/>
 				</textElement>
 				<text><![CDATA[LAPORAN DATA BARANG]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="183" y="47" width="226" height="23" uuid="f8e796ef-e0b1-4e33-a41f-6b7559c119a8"/>
+				<textElement>
+					<font fontName="Times New Roman" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SMK INFORMATIKA UTAMA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="145" y="70" width="331" height="20" uuid="00a32c64-9f86-4755-978f-601cf7a301a2"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Kompleks PT.PLN P2B TJBB, Krukut, Kec. Limo, Kota Depok, Jawa Barat 16514]]></text>
+			</staticText>
+			<image>
+				<reportElement x="72" y="24" width="86" height="64" uuid="ba9c3862-dc82-433c-b949-c5bcf6db832a"/>
+				<imageExpression><![CDATA["C:\\Users\\SMKI Utama3\\Pictures\\logosmkiu.jpg"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
@@ -65,6 +83,13 @@
 			<rectangle>
 				<reportElement x="0" y="0" width="555" height="20" backcolor="#B6CCD8" uuid="f9a935c9-8357-4f81-af17-eefbefcf6105"/>
 			</rectangle>
+			<staticText>
+				<reportElement x="501" y="0" width="54" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="7f4780b0-27d6-4ea7-90c8-f7bbcf895e4f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Stok]]></text>
+			</staticText>
 			<staticText>
 				<reportElement x="26" y="0" width="88" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="c7c90c26-0940-4a08-9c03-d304da17dfb0"/>
 				<textElement verticalAlignment="Middle">
@@ -99,13 +124,6 @@
 					<font fontName="Times New Roman" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Harga Jual]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="501" y="0" width="54" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="7f4780b0-27d6-4ea7-90c8-f7bbcf895e4f"/>
-				<textElement verticalAlignment="Middle">
-					<font fontName="Times New Roman" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Stok]]></text>
 			</staticText>
 		</band>
 	</columnHeader>

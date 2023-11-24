@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="634bf39e-9464-4f4b-86d0-1e3e6835ab48">
-	<property name="ireport.zoom" value="1.4641000000000015"/>
+	<property name="ireport.zoom" value="1.6105100000000057"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="NoFaktur" class="java.lang.String"/>
@@ -55,21 +55,39 @@ AND tbldetailpenjualan.NoFaktur = $P{NoFaktur};]]>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="60" splitType="Stretch">
+		<band height="99" splitType="Stretch">
 			<staticText>
-				<reportElement x="53" y="23" width="457" height="37" uuid="fd337a1d-619c-4f78-81fa-5022425261b0"/>
+				<reportElement x="161" y="79" width="331" height="20" uuid="64d628e3-6ce0-4a70-ba21-068b73881fb0"/>
 				<textElement>
-					<font fontName="Times New Roman" size="24" isBold="true" isItalic="false"/>
+					<font fontName="Times New Roman"/>
 				</textElement>
-				<text><![CDATA[Laporan Penjualan Berdasarkan No faktur]]></text>
+				<text><![CDATA[Kompleks PT.PLN P2B TJBB, Krukut, Kec. Limo, Kota Depok, Jawa Barat 16514]]></text>
+			</staticText>
+			<image>
+				<reportElement x="27" y="26" width="86" height="64" uuid="563171f7-3c6d-4880-b497-dd72f7c44d78"/>
+				<imageExpression><![CDATA["C:\\Users\\SMKI Utama3\\Pictures\\logosmkiu.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="199" y="56" width="226" height="23" uuid="6cb29b4b-ebca-4df2-8dda-1d3d761c52c7"/>
+				<textElement>
+					<font fontName="Times New Roman" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SMK INFORMATIKA UTAMA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="113" y="34" width="426" height="22" uuid="45078e34-2c6d-4998-bfb4-c08a7df70e1c"/>
+				<textElement>
+					<font fontName="Times New Roman" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LAPORAN PENJUALAN BERDASARKAN NO FAKTUR]]></text>
 			</staticText>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="18" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="23" splitType="Stretch"/>
+		<band height="43" splitType="Stretch"/>
 	</columnHeader>
 	<detail>
 		<band height="129" splitType="Stretch">

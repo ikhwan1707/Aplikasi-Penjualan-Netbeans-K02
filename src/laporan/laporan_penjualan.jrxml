@@ -39,18 +39,36 @@ AND
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="96" splitType="Stretch">
 			<staticText>
-				<reportElement x="159" y="23" width="265" height="29" uuid="7b606c01-463f-4a3c-94d7-44b3938688c0"/>
+				<reportElement x="155" y="76" width="331" height="20" uuid="7a14f2ac-b5ad-4e90-b0af-0d33af2fb2a5"/>
 				<textElement>
-					<font fontName="Times New Roman" size="24" isBold="true"/>
+					<font fontName="Times New Roman"/>
 				</textElement>
-				<text><![CDATA[Laporan Data Penjualan]]></text>
+				<text><![CDATA[Kompleks PT PLN P2B TJBB, Krukut, Kec. Limo, Kota Depok, Jawa Barat 16514]]></text>
+			</staticText>
+			<image>
+				<reportElement x="54" y="30" width="86" height="64" uuid="9ba39e00-0e94-498a-874e-84392e1753b2"/>
+				<imageExpression><![CDATA["C:\\Users\\SMKI Utama3\\Pictures\\logosmkiu.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="193" y="53" width="226" height="23" uuid="6c07cdbf-0876-4158-833b-fe45c4a833c3"/>
+				<textElement>
+					<font fontName="Times New Roman" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SMK INFORMATIKA UTAMA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="149" y="30" width="337" height="23" uuid="9780af1e-ed40-448f-b7f2-b972d86bc095"/>
+				<textElement>
+					<font fontName="Times New Roman" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LAPORAN DATA PENJUALAN BARANG]]></text>
 			</staticText>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band height="53" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
 		<band height="31" splitType="Stretch">
