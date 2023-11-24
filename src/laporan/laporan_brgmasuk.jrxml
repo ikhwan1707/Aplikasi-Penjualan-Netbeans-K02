@@ -4,76 +4,166 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
-		<![CDATA[SELECT tblbarang.KodeBarang,tblbarang.NamaBarang,tblbarang.HargaJual,tblbarang.Stok,tbldetailbrgmasuk.Jumlah,tbldetailbrgmasuk.Subtottal, tblbrgmasuk.NoNota FROM tblbarang,tbldetailbrgmasuk,tblbrgmasuk WHERE tblbarang.KodeBarang=tbldetailbrgmasuk.KodeBarang AND tblbrgmasuk.NoNota=tbldetailbrgmasuk.NoNota AND tbldetailbrgmasuk.NoNota]]>
+		<![CDATA[SELECT 
+    tblbrgmasuk.NoNota, 
+    tblbrgmasuk.TglMasuk, 
+    tblbrgmasuk.IDPetugas, 
+    tblbrgmasuk.IDDistributor, 
+    tbldistributor.NamaDistributor, 
+    tblpetugas.NamaPetugas, 
+    tbldetailbrgmasuk.KodeBarang, 
+    tblbarang.NamaBarang, 
+    tbldetailbrgmasuk.Jumlah,
+    tblbrgmasuk.Total
+FROM 
+    tblbrgmasuk
+JOIN 
+    tbldistributor ON tblbrgmasuk.IDDistributor = tbldistributor.IDDistributor
+JOIN 
+    tblpetugas ON tblbrgmasuk.IDPetugas = tblpetugas.IDPetugas
+JOIN 
+    tbldetailbrgmasuk ON tblbrgmasuk.NoNota = tbldetailbrgmasuk.NoNota
+JOIN 
+    tblbarang ON tbldetailbrgmasuk.KodeBarang = tblbarang.KodeBarang;]]>
 	</queryString>
+	<field name="NoNota" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TglMasuk" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="IDPetugas" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="IDDistributor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NamaDistributor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NamaPetugas" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
 	<field name="KodeBarang" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="NamaBarang" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="HargaJual" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="Stok" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
 	<field name="Jumlah" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="Subtottal" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="NoNota" class="java.lang.String">
+	<field name="Total" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="83" splitType="Stretch">
+			<image>
+				<reportElement x="11" y="7" width="136" height="65" uuid="6d772d94-969b-47b1-a417-5dcb71427836"/>
+				<imageExpression><![CDATA["C:\\Users\\SKMI UTAMA6\\Downloads\\logosmki.jpeg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="148" y="12" width="275" height="20" uuid="f1065474-8a20-4d30-b837-3cab6044f378"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LAPORAN DATA BARANG MASUK]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="148" y="32" width="272" height="20" uuid="b27dcce4-1d81-4e24-be6c-ccb37e6d4bf3"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SMK INFORMATIKA UTAMA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="87" y="52" width="407" height="20" uuid="39276e5d-6e8f-4bc4-a8e5-c5905f753ea2"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Kompleks PT PLN P2B TJBB, Krukut, Kec. Limo, Kota Depok, Jawa Barat 16514]]></text>
+			</staticText>
+		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="22" splitType="Stretch">
+		<band height="53" splitType="Stretch">
 			<staticText>
-				<reportElement x="6" y="2" width="100" height="20" uuid="e5fdf33c-ad88-4853-ae88-e9cf967562d4"/>
-				<text><![CDATA[NoNota]]></text>
+				<reportElement x="400" y="0" width="73" height="20" uuid="b6be45fd-5cc0-4b09-b4bf-bc26fda2b512"/>
+				<text><![CDATA[TglMasuk]]></text>
 			</staticText>
-			<staticText>
-				<reportElement x="105" y="2" width="100" height="20" uuid="76739ac2-52cd-44aa-825c-864c33538c53"/>
-				<text><![CDATA[KodeBarang]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="206" y="2" width="100" height="20" uuid="8c93413e-329b-4678-a041-672e0c4c6ff6"/>
-				<text><![CDATA[NamaBarang]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="306" y="2" width="100" height="20" uuid="ed480ab9-a89c-452d-959e-38de258c6d5c"/>
-				<text><![CDATA[HargaJual]]></text>
-			</staticText>
+			<textField>
+				<reportElement x="473" y="0" width="82" height="20" uuid="0828bf01-a2a5-4bbc-bd74-36e2ee2650ef"/>
+				<textFieldExpression><![CDATA[$F{TglMasuk}]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="48" splitType="Stretch">
 			<textField>
-				<reportElement x="6" y="3" width="100" height="20" uuid="7486a251-990d-4536-a163-3088302a03bf"/>
-				<textFieldExpression><![CDATA[$F{NoNota}]]></textFieldExpression>
+				<reportElement x="58" y="28" width="89" height="20" uuid="24012499-09a7-4516-b784-653716fd2f2f"/>
+				<textFieldExpression><![CDATA[$F{NamaPetugas}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="105" y="11" width="100" height="20" uuid="f32c5e82-78b4-4ffd-9b2e-046e8f97f721"/>
+				<reportElement x="147" y="28" width="100" height="20" uuid="c3b859ae-69d0-4df6-9c86-a02a7a5f9d04"/>
+				<textFieldExpression><![CDATA[$F{NamaDistributor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="247" y="28" width="83" height="20" uuid="f61afa5f-3939-481d-9bb2-9252ff247da5"/>
 				<textFieldExpression><![CDATA[$F{KodeBarang}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="206" y="11" width="100" height="20" uuid="5bddb743-a913-4904-8983-714bc857d98c"/>
+				<reportElement x="331" y="28" width="89" height="20" uuid="d5f2f75e-1460-4447-9c0e-1d8ea0712392"/>
 				<textFieldExpression><![CDATA[$F{NamaBarang}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="317" y="11" width="100" height="20" uuid="b4e63673-6835-42e0-ba2a-dc2ffead978a"/>
-				<textFieldExpression><![CDATA[$F{HargaJual}]]></textFieldExpression>
+				<reportElement x="420" y="28" width="52" height="20" uuid="f923527b-20bf-4d11-a758-07644aed96d8"/>
+				<textFieldExpression><![CDATA[$F{Jumlah}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="473" y="28" width="49" height="20" uuid="4385448a-de75-4ada-a621-7d7482eaf80d"/>
+				<textFieldExpression><![CDATA[$F{Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="28" width="58" height="20" uuid="498254ed-d89b-435b-bf53-fcc694ccdcd3"/>
+				<textFieldExpression><![CDATA[$F{NoNota}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="20" backcolor="#B6CCD8" uuid="bb508128-6e93-4445-b2b8-f01077949e59"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="61" y="0" width="89" height="20" uuid="3ffb0614-085a-4543-aa71-7651d8d281a7"/>
+				<text><![CDATA[Nama Petugas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="0" width="100" height="20" uuid="5f4c9be8-1266-4dac-b71c-933539e47c80"/>
+				<text><![CDATA[Nama Distributor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="0" width="83" height="20" uuid="c23c8963-aca6-4865-b2af-f62b123a93b2"/>
+				<text><![CDATA[Kode Barang]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="333" y="0" width="90" height="20" uuid="cf8d0a26-58aa-4658-a574-587f48dc2937"/>
+				<text><![CDATA[Nama Barang]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="0" width="58" height="20" uuid="10e037c7-6ddf-4c0c-b8cd-09b68a73c0b0"/>
+				<text><![CDATA[No Nota]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="421" y="0" width="52" height="20" uuid="5f2c837d-7dcc-48e2-8c28-24ed07e5e8c8"/>
+				<text><![CDATA[Jumlah]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="473" y="0" width="42" height="20" uuid="087a8213-dd3d-4441-9ca3-c1660a3a3b2b"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
 		</band>
 	</detail>
 	<columnFooter>
