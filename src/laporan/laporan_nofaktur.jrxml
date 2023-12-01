@@ -61,7 +61,7 @@ AND tbldetailpenjualan.NoFaktur = $P{NoFaktur};]]>
 				<textElement>
 					<font fontName="Times New Roman"/>
 				</textElement>
-				<text><![CDATA[Kompleks PT.PLN P2B TJBB, Krukut, Kec. Limo, Kota Depok, Jawa Barat 16514]]></text>
+				<text><![CDATA[Kompleks PT PLN P2B TJBB, Krukut, Kec. Limo, Kota Depok, Jawa Barat 16514]]></text>
 			</staticText>
 			<image>
 				<reportElement x="27" y="26" width="86" height="64" uuid="563171f7-3c6d-4880-b497-dd72f7c44d78"/>

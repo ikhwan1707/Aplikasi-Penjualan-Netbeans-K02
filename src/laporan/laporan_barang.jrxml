@@ -67,7 +67,7 @@
 				<textElement>
 					<font fontName="Times New Roman"/>
 				</textElement>
-				<text><![CDATA[Kompleks PT.PLN P2B TJBB, Krukut, Kec. Limo, Kota Depok, Jawa Barat 16514]]></text>
+				<text><![CDATA[Kompleks PT PLN P2B TJBB, Krukut, Kec. Limo, Kota Depok, Jawa Barat 16514]]></text>
 			</staticText>
 			<image>
 				<reportElement x="72" y="24" width="86" height="64" uuid="ba9c3862-dc82-433c-b949-c5bcf6db832a"/>

@@ -239,12 +239,12 @@ public class formlaporan extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
             Connection c = koneksi.getKoneksi();
-            JasperReport jasperReport = JasperCompileManager.compileReport("src/laporan/laporan_barang.jrxml");
+            JasperReport jasperReport = JasperCompileManager.compileReport("src/laporan/laporan_brgmasuk.jrxml");
             Map<String, Object> parameters = new HashMap<>();
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, c);
             
             JasperViewer viewer = new JasperViewer(jasperPrint,false);
-            viewer.setTitle("LAPORAN BARANG");
+            viewer.setTitle("LAPORAN BARANG MASUK");
             viewer.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             viewer.setVisible(true);
             

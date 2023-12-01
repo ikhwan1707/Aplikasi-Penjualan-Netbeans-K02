@@ -161,23 +161,23 @@ public class FormPetugas extends javax.swing.JFrame {
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
 
         jLabel5.setText("E-Mail");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 83, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 83, -1));
 
         jLabel6.setText("Telepon");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 83, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 83, -1));
 
         jLabel7.setText("Maksimal 15 Digit");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, -1, -1));
         getContentPane().add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 142, -1));
         getContentPane().add(txtnama, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 329, -1));
-        getContentPane().add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 329, -1));
+        getContentPane().add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 329, -1));
 
         txaalamat.setColumns(20);
         txaalamat.setRows(5);
         jScrollPane1.setViewportView(txaalamat);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 329, -1));
-        getContentPane().add(txttelepon, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 142, -1));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 329, 90));
+        getContentPane().add(txttelepon, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, 142, -1));
 
         tabelpetugas.setBackground(new java.awt.Color(182, 204, 216));
         tabelpetugas.setModel(new javax.swing.table.DefaultTableModel(
