@@ -60,31 +60,13 @@ JOIN
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="83" splitType="Stretch">
-			<image>
-				<reportElement x="11" y="7" width="136" height="65" uuid="6d772d94-969b-47b1-a417-5dcb71427836"/>
-				<imageExpression><![CDATA["C:\\Users\\SKMI UTAMA6\\Downloads\\logosmki.jpeg"]]></imageExpression>
-			</image>
+		<band height="59" splitType="Stretch">
 			<staticText>
-				<reportElement x="148" y="12" width="275" height="20" uuid="f1065474-8a20-4d30-b837-3cab6044f378"/>
+				<reportElement x="148" y="35" width="275" height="20" uuid="f1065474-8a20-4d30-b837-3cab6044f378"/>
 				<textElement textAlignment="Center">
 					<font fontName="Times New Roman" size="16" isBold="true"/>
 				</textElement>
 				<text><![CDATA[LAPORAN DATA BARANG MASUK]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="148" y="32" width="272" height="20" uuid="b27dcce4-1d81-4e24-be6c-ccb37e6d4bf3"/>
-				<textElement textAlignment="Center">
-					<font fontName="Times New Roman" size="16" isBold="true"/>
-				</textElement>
-				<text><![CDATA[SMK INFORMATIKA UTAMA]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="87" y="52" width="407" height="20" uuid="39276e5d-6e8f-4bc4-a8e5-c5905f753ea2"/>
-				<textElement textAlignment="Center">
-					<font fontName="Times New Roman"/>
-				</textElement>
-				<text><![CDATA[Kompleks PT PLN P2B TJBB, Krukut, Kec. Limo, Kota Depok, Jawa Barat 16514]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -92,78 +74,99 @@ JOIN
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="53" splitType="Stretch">
+		<band height="125" splitType="Stretch">
 			<staticText>
-				<reportElement x="400" y="0" width="73" height="20" uuid="b6be45fd-5cc0-4b09-b4bf-bc26fda2b512"/>
+				<reportElement x="399" y="65" width="73" height="20" uuid="b6be45fd-5cc0-4b09-b4bf-bc26fda2b512"/>
 				<text><![CDATA[TglMasuk]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="473" y="0" width="82" height="20" uuid="0828bf01-a2a5-4bbc-bd74-36e2ee2650ef"/>
+				<reportElement x="472" y="65" width="82" height="20" uuid="0828bf01-a2a5-4bbc-bd74-36e2ee2650ef"/>
 				<textFieldExpression><![CDATA[$F{TglMasuk}]]></textFieldExpression>
 			</textField>
+			<rectangle>
+				<reportElement x="0" y="100" width="555" height="20" backcolor="#B6CCD8" uuid="9cc2ee1a-7405-4ba2-9be6-b3c0f916de5c"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="76" y="100" width="89" height="20" uuid="3ffb0614-085a-4543-aa71-7651d8d281a7"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Nama Petugas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="165" y="100" width="100" height="20" uuid="5f4c9be8-1266-4dac-b71c-933539e47c80"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Nama Distributor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="265" y="100" width="83" height="20" uuid="c23c8963-aca6-4865-b2af-f62b123a93b2"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Kode Barang]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="348" y="100" width="90" height="20" uuid="cf8d0a26-58aa-4658-a574-587f48dc2937"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Nama Barang]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="436" y="100" width="52" height="20" uuid="5f2c837d-7dcc-48e2-8c28-24ed07e5e8c8"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Jumlah]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="488" y="100" width="42" height="20" uuid="087a8213-dd3d-4441-9ca3-c1660a3a3b2b"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="100" width="58" height="20" uuid="10e037c7-6ddf-4c0c-b8cd-09b68a73c0b0"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[No Nota]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="148" y="0" width="272" height="20" uuid="b27dcce4-1d81-4e24-be6c-ccb37e6d4bf3"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SMK INFORMATIKA UTAMA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="87" y="20" width="407" height="20" uuid="39276e5d-6e8f-4bc4-a8e5-c5905f753ea2"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Kompleks PT PLN P2B TJBB, Krukut, Kec. Limo, Kota Depok, Jawa Barat 16514]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="48" splitType="Stretch">
 			<textField>
-				<reportElement x="58" y="28" width="89" height="20" uuid="24012499-09a7-4516-b784-653716fd2f2f"/>
+				<reportElement x="71" y="0" width="89" height="20" uuid="24012499-09a7-4516-b784-653716fd2f2f"/>
 				<textFieldExpression><![CDATA[$F{NamaPetugas}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="147" y="28" width="100" height="20" uuid="c3b859ae-69d0-4df6-9c86-a02a7a5f9d04"/>
+				<reportElement x="160" y="0" width="100" height="20" uuid="c3b859ae-69d0-4df6-9c86-a02a7a5f9d04"/>
 				<textFieldExpression><![CDATA[$F{NamaDistributor}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="247" y="28" width="83" height="20" uuid="f61afa5f-3939-481d-9bb2-9252ff247da5"/>
+				<reportElement x="260" y="0" width="83" height="20" uuid="f61afa5f-3939-481d-9bb2-9252ff247da5"/>
 				<textFieldExpression><![CDATA[$F{KodeBarang}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="331" y="28" width="89" height="20" uuid="d5f2f75e-1460-4447-9c0e-1d8ea0712392"/>
+				<reportElement x="344" y="0" width="89" height="20" uuid="d5f2f75e-1460-4447-9c0e-1d8ea0712392"/>
 				<textFieldExpression><![CDATA[$F{NamaBarang}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="420" y="28" width="52" height="20" uuid="f923527b-20bf-4d11-a758-07644aed96d8"/>
+				<reportElement x="433" y="0" width="52" height="20" uuid="f923527b-20bf-4d11-a758-07644aed96d8"/>
 				<textFieldExpression><![CDATA[$F{Jumlah}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="473" y="28" width="49" height="20" uuid="4385448a-de75-4ada-a621-7d7482eaf80d"/>
+				<reportElement x="486" y="0" width="49" height="20" uuid="4385448a-de75-4ada-a621-7d7482eaf80d"/>
 				<textFieldExpression><![CDATA[$F{Total}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="28" width="58" height="20" uuid="498254ed-d89b-435b-bf53-fcc694ccdcd3"/>
+				<reportElement x="13" y="0" width="58" height="20" uuid="498254ed-d89b-435b-bf53-fcc694ccdcd3"/>
 				<textFieldExpression><![CDATA[$F{NoNota}]]></textFieldExpression>
 			</textField>
-			<rectangle>
-				<reportElement x="0" y="0" width="555" height="20" backcolor="#B6CCD8" uuid="bb508128-6e93-4445-b2b8-f01077949e59"/>
-			</rectangle>
-			<staticText>
-				<reportElement x="61" y="0" width="89" height="20" uuid="3ffb0614-085a-4543-aa71-7651d8d281a7"/>
-				<text><![CDATA[Nama Petugas]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="150" y="0" width="100" height="20" uuid="5f4c9be8-1266-4dac-b71c-933539e47c80"/>
-				<text><![CDATA[Nama Distributor]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="250" y="0" width="83" height="20" uuid="c23c8963-aca6-4865-b2af-f62b123a93b2"/>
-				<text><![CDATA[Kode Barang]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="333" y="0" width="90" height="20" uuid="cf8d0a26-58aa-4658-a574-587f48dc2937"/>
-				<text><![CDATA[Nama Barang]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="2" y="0" width="58" height="20" uuid="10e037c7-6ddf-4c0c-b8cd-09b68a73c0b0"/>
-				<text><![CDATA[No Nota]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="421" y="0" width="52" height="20" uuid="5f2c837d-7dcc-48e2-8c28-24ed07e5e8c8"/>
-				<text><![CDATA[Jumlah]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="473" y="0" width="42" height="20" uuid="087a8213-dd3d-4441-9ca3-c1660a3a3b2b"/>
-				<text><![CDATA[Total]]></text>
-			</staticText>
 		</band>
 	</detail>
 	<columnFooter>

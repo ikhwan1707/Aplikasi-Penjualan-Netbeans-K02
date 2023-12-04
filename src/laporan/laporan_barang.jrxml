@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dfb4097c-1815-42ed-84ac-33f65e6f4266">
-	<property name="ireport.zoom" value="1.6105100000000043"/>
+	<property name="ireport.zoom" value="1.9487171000000054"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="24"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -47,36 +47,33 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="90" splitType="Stretch">
+		<band height="71" splitType="Stretch">
 			<staticText>
-				<reportElement x="193" y="24" width="226" height="23" uuid="3eec50d3-7f81-435f-b98f-9ac568290689"/>
+				<reportElement x="187" y="48" width="209" height="23" uuid="3eec50d3-7f81-435f-b98f-9ac568290689"/>
 				<textElement>
-					<font fontName="Times New Roman" size="16" isBold="true"/>
+					<font fontName="Times New Roman" size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[LAPORAN DATA BARANG]]></text>
 			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="74" splitType="Stretch">
 			<staticText>
-				<reportElement x="183" y="47" width="226" height="23" uuid="f8e796ef-e0b1-4e33-a41f-6b7559c119a8"/>
+				<reportElement x="177" y="0" width="226" height="23" uuid="f8e796ef-e0b1-4e33-a41f-6b7559c119a8"/>
 				<textElement>
 					<font fontName="Times New Roman" size="16" isBold="true"/>
 				</textElement>
 				<text><![CDATA[SMK INFORMATIKA UTAMA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="145" y="70" width="331" height="20" uuid="00a32c64-9f86-4755-978f-601cf7a301a2"/>
+				<reportElement x="139" y="23" width="331" height="20" uuid="00a32c64-9f86-4755-978f-601cf7a301a2"/>
 				<textElement>
 					<font fontName="Times New Roman"/>
 				</textElement>
 				<text><![CDATA[Kompleks PT PLN P2B TJBB, Krukut, Kec. Limo, Kota Depok, Jawa Barat 16514]]></text>
 			</staticText>
-			<image>
-				<reportElement x="72" y="24" width="86" height="64" uuid="ba9c3862-dc82-433c-b949-c5bcf6db832a"/>
-				<imageExpression><![CDATA["C:\\Users\\SMKI Utama3\\Pictures\\logosmkiu.jpg"]]></imageExpression>
-			</image>
 		</band>
-	</title>
-	<pageHeader>
-		<band height="23" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
 		<band height="22" splitType="Stretch">

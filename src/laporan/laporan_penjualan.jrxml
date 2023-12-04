@@ -39,27 +39,9 @@ AND
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="96" splitType="Stretch">
+		<band height="66" splitType="Stretch">
 			<staticText>
-				<reportElement x="155" y="76" width="331" height="20" uuid="7a14f2ac-b5ad-4e90-b0af-0d33af2fb2a5"/>
-				<textElement>
-					<font fontName="Times New Roman"/>
-				</textElement>
-				<text><![CDATA[Kompleks PT PLN P2B TJBB, Krukut, Kec. Limo, Kota Depok, Jawa Barat 16514]]></text>
-			</staticText>
-			<image>
-				<reportElement x="54" y="30" width="86" height="64" uuid="9ba39e00-0e94-498a-874e-84392e1753b2"/>
-				<imageExpression><![CDATA["C:\\Users\\SMKI Utama3\\Pictures\\logosmkiu.jpg"]]></imageExpression>
-			</image>
-			<staticText>
-				<reportElement x="193" y="53" width="226" height="23" uuid="6c07cdbf-0876-4158-833b-fe45c4a833c3"/>
-				<textElement>
-					<font fontName="Times New Roman" size="16" isBold="true"/>
-				</textElement>
-				<text><![CDATA[SMK INFORMATIKA UTAMA]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="149" y="30" width="337" height="23" uuid="9780af1e-ed40-448f-b7f2-b972d86bc095"/>
+				<reportElement x="149" y="43" width="337" height="23" uuid="9780af1e-ed40-448f-b7f2-b972d86bc095"/>
 				<textElement>
 					<font fontName="Times New Roman" size="16" isBold="true"/>
 				</textElement>
@@ -68,7 +50,22 @@ AND
 		</band>
 	</title>
 	<pageHeader>
-		<band height="53" splitType="Stretch"/>
+		<band height="73" splitType="Stretch">
+			<staticText>
+				<reportElement x="150" y="23" width="331" height="20" uuid="7a14f2ac-b5ad-4e90-b0af-0d33af2fb2a5"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Kompleks PT PLN P2B TJBB, Krukut, Kec. Limo, Kota Depok, Jawa Barat 16514]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="188" y="0" width="226" height="23" uuid="6c07cdbf-0876-4158-833b-fe45c4a833c3"/>
+				<textElement>
+					<font fontName="Times New Roman" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SMK INFORMATIKA UTAMA]]></text>
+			</staticText>
+		</band>
 	</pageHeader>
 	<columnHeader>
 		<band height="31" splitType="Stretch">
@@ -76,31 +73,31 @@ AND
 				<reportElement x="0" y="0" width="555" height="20" backcolor="#B6CCD8" uuid="6cc999a8-3b6e-43a1-8535-f7064dfe3eb6"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="356" y="1" width="53" height="20" uuid="01031b10-2583-480a-b116-fcba17521457"/>
+				<reportElement x="342" y="1" width="53" height="20" uuid="01031b10-2583-480a-b116-fcba17521457"/>
 				<text><![CDATA[Stok]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="414" y="1" width="64" height="20" uuid="0f071083-92e9-4dba-a776-3bd10f754a0d"/>
+				<reportElement x="400" y="1" width="64" height="20" uuid="0f071083-92e9-4dba-a776-3bd10f754a0d"/>
 				<text><![CDATA[Jumlah]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="491" y="1" width="64" height="20" uuid="b41bc4e1-f7ce-4445-bbcd-e6a70f396cf7"/>
+				<reportElement x="477" y="1" width="64" height="20" uuid="b41bc4e1-f7ce-4445-bbcd-e6a70f396cf7"/>
 				<text><![CDATA[SubTotal]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="0" width="73" height="20" uuid="d829d5af-df04-4930-b80c-997313f1f941"/>
+				<reportElement x="29" y="1" width="73" height="20" uuid="d829d5af-df04-4930-b80c-997313f1f941"/>
 				<text><![CDATA[NoFaktur]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="73" y="0" width="76" height="20" uuid="1cdf9c5f-15fb-47d0-b41a-f49b2353f662"/>
+				<reportElement x="102" y="1" width="76" height="20" uuid="1cdf9c5f-15fb-47d0-b41a-f49b2353f662"/>
 				<text><![CDATA[KodeBarang]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="149" y="0" width="134" height="20" uuid="55198666-23ec-4718-9fcc-8cb38e93c730"/>
+				<reportElement x="178" y="1" width="92" height="20" uuid="55198666-23ec-4718-9fcc-8cb38e93c730"/>
 				<text><![CDATA[NamaBarang]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="283" y="0" width="73" height="20" uuid="fd2d2255-53e9-4e51-8f70-1990fe2f28fe"/>
+				<reportElement x="269" y="0" width="73" height="20" uuid="fd2d2255-53e9-4e51-8f70-1990fe2f28fe"/>
 				<text><![CDATA[HargaJual]]></text>
 			</staticText>
 		</band>
@@ -108,31 +105,31 @@ AND
 	<detail>
 		<band height="46" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="73" height="20" uuid="4b9106a1-b368-4c3c-aded-d8d3104b2157"/>
+				<reportElement x="29" y="1" width="73" height="20" uuid="4b9106a1-b368-4c3c-aded-d8d3104b2157"/>
 				<textFieldExpression><![CDATA[$F{NoFaktur}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="73" y="4" width="76" height="20" uuid="b4453046-3d4a-48de-ad8b-d8e17e7fb1b6"/>
+				<reportElement x="102" y="2" width="76" height="20" uuid="b4453046-3d4a-48de-ad8b-d8e17e7fb1b6"/>
 				<textFieldExpression><![CDATA[$F{KodeBarang}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="149" y="0" width="134" height="20" uuid="ba2c1d62-67de-4827-b9bb-68d3ae569c09"/>
+				<reportElement x="178" y="1" width="92" height="20" uuid="ba2c1d62-67de-4827-b9bb-68d3ae569c09"/>
 				<textFieldExpression><![CDATA[$F{NamaBarang}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="283" y="1" width="73" height="20" uuid="dff421fe-76ea-48ba-b60a-aeb637121fdc"/>
+				<reportElement x="269" y="1" width="73" height="20" uuid="dff421fe-76ea-48ba-b60a-aeb637121fdc"/>
 				<textFieldExpression><![CDATA[$F{HargaJual}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="356" y="4" width="53" height="20" uuid="87bb0202-97a0-4fc7-98cc-9cb0946bb898"/>
+				<reportElement x="342" y="2" width="53" height="20" uuid="87bb0202-97a0-4fc7-98cc-9cb0946bb898"/>
 				<textFieldExpression><![CDATA[$F{Stok}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="414" y="4" width="64" height="20" uuid="d6edb2c2-ed7f-4554-a843-45713452a10d"/>
+				<reportElement x="400" y="1" width="64" height="20" uuid="d6edb2c2-ed7f-4554-a843-45713452a10d"/>
 				<textFieldExpression><![CDATA[$F{Jumlah}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="491" y="1" width="64" height="20" uuid="d3e1648f-c65a-456a-a3d5-c0a24ab48d80"/>
+				<reportElement x="477" y="1" width="64" height="20" uuid="d3e1648f-c65a-456a-a3d5-c0a24ab48d80"/>
 				<textFieldExpression><![CDATA[$F{SubTotal}]]></textFieldExpression>
 			</textField>
 		</band>
