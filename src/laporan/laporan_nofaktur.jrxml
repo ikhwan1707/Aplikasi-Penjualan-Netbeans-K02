@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="634bf39e-9464-4f4b-86d0-1e3e6835ab48">
-	<property name="ireport.zoom" value="1.2100000000000044"/>
+	<property name="ireport.zoom" value="1.3310000000000048"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="84"/>
 	<parameter name="NoFaktur" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT tblpetugas.IDPetugas, tblpetugas.NamaPetugas, tblbarang.KodeBarang,tblbarang.NamaBarang,tblbarang.HargaJual,tblbarang.Stok,tbldetailpenjualan.Jumlah, tbldetailpenjualan.SubTotal,tblpenjualan.NoFaktur, tblpenjualan.Bayar, tblpenjualan.Sisa, tblpenjualan.Total, tblpenjualan.TglPenjualan
@@ -152,7 +152,7 @@ AND tbldetailpenjualan.NoFaktur = $P{NoFaktur};]]>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="87" splitType="Stretch">
+		<band height="28" splitType="Stretch">
 			<textField>
 				<reportElement x="40" y="4" width="100" height="20" uuid="5a599af7-b3b6-45db-bc4f-075978cbce74"/>
 				<textFieldExpression><![CDATA[$F{NamaBarang}]]></textFieldExpression>
@@ -173,43 +173,43 @@ AND tbldetailpenjualan.NoFaktur = $P{NoFaktur};]]>
 				<reportElement x="140" y="4" width="100" height="20" uuid="d0f6cc4e-a1af-4a7e-98d0-3a1ea2111d7b"/>
 				<textFieldExpression><![CDATA[$F{HargaJual}]]></textFieldExpression>
 			</textField>
-			<line>
-				<reportElement x="1" y="31" width="551" height="1" forecolor="#999999" uuid="1857670a-377c-4c5e-97bb-1acc985e3af7"/>
-			</line>
 		</band>
 	</detail>
 	<columnFooter>
 		<band height="17" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="34" splitType="Stretch"/>
+		<band height="7" splitType="Stretch"/>
 	</pageFooter>
 	<summary>
-		<band height="68" splitType="Stretch">
+		<band height="73" splitType="Stretch">
 			<staticText>
-				<reportElement x="374" y="20" width="70" height="20" uuid="eb369965-104c-40a8-954b-205449a30386"/>
+				<reportElement x="370" y="33" width="70" height="20" uuid="eb369965-104c-40a8-954b-205449a30386"/>
 				<text><![CDATA[Bayar]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="444" y="20" width="100" height="20" uuid="2c9f6c51-9386-4d80-99b2-f98f1500608b"/>
+				<reportElement x="440" y="33" width="100" height="20" uuid="2c9f6c51-9386-4d80-99b2-f98f1500608b"/>
 				<textFieldExpression><![CDATA[$F{Bayar}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="374" y="40" width="70" height="20" uuid="bff1e647-eb44-4969-80be-c580b4ad634e"/>
+				<reportElement x="370" y="53" width="70" height="20" uuid="bff1e647-eb44-4969-80be-c580b4ad634e"/>
 				<text><![CDATA[Kembali]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="444" y="40" width="100" height="20" uuid="d6cc9b8d-aa1a-49a9-b348-1d18a2c9d0a5"/>
+				<reportElement x="440" y="53" width="100" height="20" uuid="d6cc9b8d-aa1a-49a9-b348-1d18a2c9d0a5"/>
 				<textFieldExpression><![CDATA[$F{Sisa}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="374" y="0" width="70" height="20" uuid="6a75f4dc-7909-44cb-8fe1-968f71d34b5b"/>
+				<reportElement x="370" y="13" width="70" height="20" uuid="6a75f4dc-7909-44cb-8fe1-968f71d34b5b"/>
 				<text><![CDATA[Total]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="444" y="0" width="100" height="20" uuid="a4884c05-183c-4141-bf7b-a39a9cec97da"/>
+				<reportElement x="440" y="13" width="100" height="20" uuid="a4884c05-183c-4141-bf7b-a39a9cec97da"/>
 				<textFieldExpression><![CDATA[$F{Total}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement x="0" y="0" width="551" height="1" forecolor="#999999" uuid="1857670a-377c-4c5e-97bb-1acc985e3af7"/>
+			</line>
 		</band>
 	</summary>
 </jasperReport>

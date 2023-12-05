@@ -751,7 +751,7 @@ public class barangmasuk extends javax.swing.JFrame {
                
                 Connection kon1 = koneksi.getKoneksi();
                 Statement stt1 = kon1.createStatement();
-                String SQL1 = "Update tblbarang Set stok=stok - '"+txtjumlah.getText()+"'" +
+                String SQL1 = "Update tblbarang Set stok=stok + '"+txtjumlah.getText()+"'" +
                 "Where KodeBarang='"+combokodebarang.getSelectedItem().toString()+"'";
                 stt1.executeUpdate(SQL1);
                

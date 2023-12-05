@@ -143,6 +143,47 @@ public class penjualan extends javax.swing.JFrame {
         txtsubtotal.setText("");
     }
 
+    public void TampilGridDetail() {
+    //membuat model
+    tableModel = new DefaultTableModel();
+    
+    //menghapus seluruh data
+    tableModel.getDataVector().removeAllElements();
+    //memberi tau bahwa data telah kosong
+    tableModel.fireTableDataChanged();
+    
+    tbhasil.setModel(tableModel);
+    tableModel.addColumn("Kode Barang");
+    tableModel.addColumn("Nama Barang");
+    tableModel.addColumn("Harga Jual");
+    tableModel.addColumn("Stok");
+    tableModel.addColumn("Jumlah");
+    tableModel.addColumn("Subtotal");
+    
+    try {
+        String sql = "SELECT tblbarang.KodeBarang,tblbarang.NamaBarang,tblbarang.HargaJual,tblbarang.Stok,tbldetailpenjualan.Jumlah,tbldetailpenjualan.SubTotal, tblpenjualan.NoFaktur FROM tblpenjualan,tbldetailpenjualan,tblpenjualan WHERE tblbarang.KodeBarang=tbldetailpenjualan.KodeBarang AND tblpenjualan.NoFaktur=tbldetailpenjualan.NoFaktur AND tbldetailpenjualan.NoFaktur='"+txtnofaktur.getText()+"'";
+        
+        Connection c = koneksi.getKoneksi(); 
+            Statement s = c.createStatement();       
+            ResultSet res = s.executeQuery(sql);  
+
+            while(res.next()){
+                String data[] = new String[6];
+            // lakukan penelusuran baris 
+                data[0] = res.getString(1);
+                data[1] = res.getString(2);
+                data[2] = res.getString(3);
+                data[3] = res.getString(4);
+                data[4] = res.getString(5);
+                data[5] = res.getString(6);
+                tableModel.addRow(data);
+            }
+    tbhasil.setModel(tableModel);
+    
+    }catch(SQLException e){ 
+            System.out.println("Terjadi Error");
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -292,6 +333,12 @@ public class penjualan extends javax.swing.JFrame {
 
         jLabel6.setText("Tanggal Penjualan");
         jPanel8.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, -1, -1));
+
+        txtnofaktur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtnofakturActionPerformed(evt);
+            }
+        });
         jPanel8.add(txtnofaktur, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 140, -1));
 
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder("Grid Data Barang"));
@@ -636,23 +683,33 @@ public class penjualan extends javax.swing.JFrame {
     private void btncaridataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncaridataActionPerformed
         // TODO add your handling code here:
         try {
-            Connection con = koneksi.getKoneksi();
-            Statement stt = con.createStatement();
-            String SQL = "SELECT * FROM tblpenjualan where nofaktur='"+txtnofaktur.getText().toString()+"'";
-            ResultSet res = stt.executeQuery(SQL);
-            res.absolute(1);
-//          TampilGridDetail();
+    Connection con = koneksi.getKoneksi();
+    String SQL = "SELECT * FROM tblpenjualan WHERE nofaktur=?";
+    
+    try (PreparedStatement pst = con.prepareStatement(SQL)) {
+        pst.setString(1, txtnofaktur.getText().toString());
+        ResultSet res = pst.executeQuery();
+        
+        if (res.next()) {
+            TampilGridDetail();
             txttanggal.setText(res.getString("TglPenjualan"));
             txtidpetugas.setText(res.getString("IDPetugas"));
             txtbayar.setText(res.getString("Bayar"));
             txtsisa.setText(res.getString("Sisa"));
             txttotal.setText(res.getString("Total"));
+            
             btnsave.setEnabled(false);
             txtnofaktur.setEnabled(false);
             btncaridata.setEnabled(false);
-            } catch (SQLException ex) {
-                 System.out.println("Terjadi Error"+ex.getMessage());
+        } else {
+            System.out.println("Data not found for the specified criteria.");
         }
+    }
+} catch (SQLException ex) {
+    ex.printStackTrace();
+    System.out.println("Terjadi Error: " + ex.getMessage());
+}
+
     }//GEN-LAST:event_btncaridataActionPerformed
 
     private void txttanggalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttanggalActionPerformed
@@ -748,6 +805,10 @@ public class penjualan extends javax.swing.JFrame {
          listpetugas a = new listpetugas();
         a.setVisible(true);
     }//GEN-LAST:event_btncaripetugasActionPerformed
+
+    private void txtnofakturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnofakturActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtnofakturActionPerformed
 
     /**
      * @param args the command line arguments
