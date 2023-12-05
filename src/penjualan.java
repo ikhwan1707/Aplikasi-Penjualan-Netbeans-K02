@@ -609,7 +609,6 @@ public class penjualan extends javax.swing.JFrame {
                 totalBiaya();
                 stt.close();
                 cmbkodebarang.requestFocus();
-                btnadditem.setEnabled(false);
                 btnsave.setEnabled(true);
                 BersihDetail();
                 cmbkodebarang.requestFocus();

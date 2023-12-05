@@ -141,7 +141,6 @@ public class FormDistributor extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         txtid = new javax.swing.JTextField();
         txtnama = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -180,9 +179,6 @@ public class FormDistributor extends javax.swing.JFrame {
 
         jLabel7.setText("Telepon");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 373, 123, -1));
-
-        jLabel8.setText("Maksimal 15 Digit");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 377, 150, -1));
         getContentPane().add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 84, 160, -1));
         getContentPane().add(txtnama, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 125, 341, -1));
 
@@ -521,7 +517,6 @@ public class FormDistributor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

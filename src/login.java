@@ -142,7 +142,7 @@ public class login extends javax.swing.JFrame {
             boolean Pernyataan = username.equals("admin") && password.equals("12345");
             
             if (Pernyataan == true){
-               JOptionPane.showMessageDialog(null, " selamat username " + username + "\npassword " + password + "\nberhasil login ", "Informasi Login", JOptionPane.DEFAULT_OPTION);
+               JOptionPane.showMessageDialog(null, " selamat username " + username + "\nberhasil login ", "Informasi Login", JOptionPane.DEFAULT_OPTION);
                new MenuUtama().setVisible(true);
             }else{
                 JOptionPane.showConfirmDialog(null, "maaf user dan password salah", "login", JOptionPane.DEFAULT_OPTION); 

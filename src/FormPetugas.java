@@ -130,7 +130,6 @@ public class FormPetugas extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         txtid = new javax.swing.JTextField();
         txtnama = new javax.swing.JTextField();
         txtemail = new javax.swing.JTextField();
@@ -165,9 +164,6 @@ public class FormPetugas extends javax.swing.JFrame {
 
         jLabel6.setText("Telepon");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 83, -1));
-
-        jLabel7.setText("Maksimal 15 Digit");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, -1, -1));
         getContentPane().add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 142, -1));
         getContentPane().add(txtnama, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 329, -1));
         getContentPane().add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 329, -1));
@@ -482,7 +478,6 @@ public class FormPetugas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
