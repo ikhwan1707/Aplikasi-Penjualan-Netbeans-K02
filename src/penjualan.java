@@ -690,7 +690,7 @@ public class penjualan extends javax.swing.JFrame {
             txtnofaktur.setEnabled(false);
             btncaridata.setEnabled(false);
         } else {
-            System.out.println("Data not found for the specified criteria.");
+            System.out.println("Data tidak ditemukan");
         }
     }
 } catch (SQLException ex) {
