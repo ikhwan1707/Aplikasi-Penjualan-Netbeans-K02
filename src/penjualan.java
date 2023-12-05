@@ -143,32 +143,19 @@ public class penjualan extends javax.swing.JFrame {
         txtsubtotal.setText("");
     }
 
-    public void TampilGridDetail() {
-    //membuat model
-    tableModel = new DefaultTableModel();
-    
-    //menghapus seluruh data
-    tableModel.getDataVector().removeAllElements();
-    //memberi tau bahwa data telah kosong
-    tableModel.fireTableDataChanged();
-    
-    tbhasil.setModel(tableModel);
-    tableModel.addColumn("Kode Barang");
-    tableModel.addColumn("Nama Barang");
-    tableModel.addColumn("Harga Jual");
-    tableModel.addColumn("Stok");
-    tableModel.addColumn("Jumlah");
-    tableModel.addColumn("Subtotal");
-    
-    try {
-        String sql = "SELECT tblbarang.KodeBarang,tblbarang.NamaBarang,tblbarang.HargaJual,tblbarang.Stok,tbldetailpenjualan.Jumlah,tbldetailpenjualan.SubTotal, tblpenjualan.NoFaktur FROM tblpenjualan,tbldetailpenjualan,tblpenjualan WHERE tblbarang.KodeBarang=tbldetailpenjualan.KodeBarang AND tblpenjualan.NoFaktur=tbldetailpenjualan.NoFaktur AND tbldetailpenjualan.NoFaktur='"+txtnofaktur.getText()+"'";
-        
-        Connection c = koneksi.getKoneksi(); 
+    private void TampilGridDetail(){
+        try{
+            
+            String sql = "SELECT tblbarang.kodebarang,tblbarang.namabarang,tblbarang.hargajual,tblbarang.stok,tbldetailpenjualan.jumlah,"
+                    + "tbldetailpenjualan.subtotal,tblpenjualan.nofaktur "
+                    + "FROM tblbarang,tbldetailpenjualan,tblpenjualan WHERE tblbarang.kodebarang=tbldetailpenjualan.kodebarang "
+                    + "AND tblpenjualan.nofaktur=tbldetailpenjualan.nofaktur AND tbldetailpenjualan.nofaktur='"+txtnofaktur.getText()+"'";
+
+            Connection c = koneksi.getKoneksi(); 
             Statement s = c.createStatement();       
             ResultSet res = s.executeQuery(sql);  
 
             while(res.next()){
-                String data[] = new String[6];
             // lakukan penelusuran baris 
                 data[0] = res.getString(1);
                 data[1] = res.getString(2);
@@ -178,12 +165,13 @@ public class penjualan extends javax.swing.JFrame {
                 data[5] = res.getString(6);
                 tableModel.addRow(data);
             }
-    tbhasil.setModel(tableModel);
-    
-    }catch(SQLException e){ 
-            System.out.println("Terjadi Error");
+            
+        }catch(SQLException e){ 
+           System.err.println(e.getMessage());
         }
     }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
